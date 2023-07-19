@@ -3,7 +3,15 @@
 @tailwind utilities;
 
 
+html {
+    scroll-behavior: smooth;
+    font-family: 'Raleway', sans-serif;
+}
 
 .parent-div {
     @apply flex flex-col gap-2 sm:flex-row sm:bg-blue-200 m-16 bg-red-300 hover:bg-red-700;
+}
+
+.custom-img {
+    background-image: url("https://images.unsplash.com/photo-1512314889357-e157c22f938d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80");
 }
