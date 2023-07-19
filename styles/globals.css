@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.parent-div {
+    @apply flex flex-col gap-2 sm:flex-row sm:bg-blue-200 m-16 bg-red-300 hover:bg-red-700;
+}
