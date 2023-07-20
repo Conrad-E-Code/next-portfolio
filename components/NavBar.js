@@ -5,7 +5,6 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import Colors from '../constants/colors'
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
-
 const NavBar = () => {
     const [nav, setNav] = useState(false)
     const [clr, setClr] = useState(Colors.secondaryColor)
@@ -37,10 +36,10 @@ const NavBar = () => {
                 <Link className='cursor-pointer' href='/about-me'> About Me</Link>
                 </li>
                 <li className='navbar-li'>
-                <Link className='cursor-pointer' href='/projects'> Projects</Link>
+                <Link className='cursor-pointer' href='/projects'> Skills</Link>
                 </li>
                 <li className='navbar-li'>
-                    <Link href="#skills">Skills</Link>
+                    <Link href="#projects">Projects</Link>
                 </li>
             </ul>
             {/* Mobile Button */}
