@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-<div className='my-5' >
+<div className='my-20' >
 <Hero message="Software Developer" heading="Conrad Etherington" />
 </div>
   )
