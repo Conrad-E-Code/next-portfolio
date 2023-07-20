@@ -30,7 +30,7 @@ const NavBar = () => {
 
   return (
     <div style={{backgroundColor: `${clr}`}} className='z-20 fixed top-0 left-0 w-full ease-in duration-300'>
-        <div style={{color: textClr}}className='max-w-[1240px] m-auto flex justify-between items-center p-4'>
+        <div style={{color: textClr}}className='max-w-[1240px] m-auto flex justify-between items-center'>
         <h1 onClick={()=> router.push("/")} className='cursor-pointer font-bold '>Conrad Etherington</h1>
             <ul className='hidden sm:flex mx-5 gap-3 '>
                 <li className='navbar-li'>
@@ -44,7 +44,7 @@ const NavBar = () => {
                 </li>
             </ul>
             {/* Mobile Button */}
-            <div className='block sm:hidden z-40 ease-in duration-300'>
+            <div className='fixed top-1 right-4 sm:hidden z-40 ease-in duration-300'>
                 {!nav ? <AiOutlineMenu onClick={handleNav} size={20}/> : <AiOutlineClose onClick={handleNav} size={20}/>}
             </div>
             {/* Mobile Menu */}
@@ -52,13 +52,13 @@ const NavBar = () => {
              bottom-0 flex justify-center items-center w-full
               h-screen bg-secondaryColor ease-in duration-300' >
             <ul className='flex flex-col mx-5 gap-3'>
-                <li className='p-4 text-4xl hover:text-textColorDark'>
+                <li className=' text-4xl hover:text-textColorDark'>
                 <Link onClick={handleNav} className='cursor-pointer' href='/about-me'> About Me</Link>
                 </li>
-                <li className='p-4 text-4xl hover:text-textColorDark'>
+                <li className=' text-4xl hover:text-textColorDark'>
                 <Link className='cursor-pointer' href='/projects'> Projects</Link>
                 </li>
-                <li className={`p-4 text-4xl hover:text-${Colors.textColorDark}`}>
+                <li className={` text-4xl hover:text-${Colors.textColorDark}`}>
                     <Link href="#skills">Skills</Link>
                 </li>
             </ul>
