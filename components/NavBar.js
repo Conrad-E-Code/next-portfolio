@@ -7,9 +7,13 @@ import Colors from '../constants/colors'
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
 
 const NavBar = () => {
+    const [nav, setNav] = useState(false)
     const [clr, setClr] = useState(Colors.secondaryColor)
     const [textClr, setTextClr] = useState(Colors.textColorLight)
     const router = useRouter()
+    const handleNav = () => {
+        setNav(!nav)
+    }
     useEffect(()=>{
         const changeColor = () => {
             if(window.scrollY >= 15){
@@ -40,25 +44,25 @@ const NavBar = () => {
                 </li>
             </ul>
             {/* Mobile Button */}
-            <div className='block sm:hidden'>
-                <AiOutlineMenu size={20}/>
+            <div className='block sm:hidden z-40 ease-in duration-300'>
+                {!nav ? <AiOutlineMenu onClick={handleNav} size={20}/> : <AiOutlineClose onClick={handleNav} size={20}/>}
             </div>
             {/* Mobile Menu */}
-            <div className='sm:hidden absolute top-0 left-0 right-0
+{nav ?             <div style={{color: textClr}} className='sm:hidden absolute top-0 left-0 right-0
              bottom-0 flex justify-center items-center w-full
-              h-screen'>
+              h-screen bg-secondaryColor ease-in duration-300' >
             <ul className='flex flex-col mx-5 gap-3'>
-                <li className='navbar-li'>
-                <Link className='cursor-pointer' href='/about-me'> About Me</Link>
+                <li className='p-4 text-4xl hover:text-textColorDark'>
+                <Link onClick={handleNav} className='cursor-pointer' href='/about-me'> About Me</Link>
                 </li>
-                <li className='navbar-li'>
+                <li className='p-4 text-4xl hover:text-textColorDark'>
                 <Link className='cursor-pointer' href='/projects'> Projects</Link>
                 </li>
-                <li className='navbar-li'>
+                <li className={`p-4 text-4xl hover:text-${Colors.textColorDark}`}>
                     <Link href="#skills">Skills</Link>
                 </li>
             </ul>
-            </div>
+            </div> : null}
 
             
         </div>
