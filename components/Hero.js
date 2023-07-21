@@ -1,4 +1,5 @@
 import React from 'react'
+import MyVideo from './MyVideo'
 
 const Hero = ({heading, message}) => {
   return (
@@ -10,6 +11,7 @@ const Hero = ({heading, message}) => {
             <p className= 'py-5 text-xl'>{message}</p>
             <button className="px-8 py-2 border">book</button>
         </div>
+        <MyVideo/>
     </div>
   )
 }
