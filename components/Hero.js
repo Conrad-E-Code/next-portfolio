@@ -11,7 +11,7 @@ const Hero = ({heading, message}) => {
             <p className= 'py-5 text-xl'>{message}</p>
             <button className="px-8 py-2 border">book</button>
         </div>
-        <MyVideo/>
+        <MyVideo videoUrl={"https://www.youtube-nocookie.com/embed/_oqQ0xwN3gE?autoplay=1&mute=1&loop=1"}/>
     </div>
   )
 }
