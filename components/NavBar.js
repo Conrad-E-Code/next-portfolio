@@ -29,9 +29,9 @@ const NavBar = () => {
     },[])
     console.log(textClr, typeof textClr)
   return (
-    <div className={` bg-${clr} z-20 fixed top-0 left-0 w-full ease-in duration-300`}>
-        <div style={{color: Colors[textClr]}} className={`max-w-[1240px] m-auto flex justify-between items-center`}>
-        <h1 onClick={()=> router.push("/")} className={`cursor-pointer font-bold `}>Conrad Etherington</h1>
+    <div className={`text-${textClr} bg-${clr} z-20 fixed top-0 left-0 w-full ease-in duration-300`}>
+        <div className={`max-w-[1240px] m-auto flex justify-between items-center`}>
+        <h1 onClick={()=> router.push("/")} className={` cursor-pointer font-bold `}>Conrad Etherington</h1>
             <ul className='hidden sm:flex mx-5 gap-3 '>
                 <li className='navbar-li'>
                 <Link className='cursor-pointer' href='/about-me'> About Me</Link>
