@@ -17,7 +17,7 @@ module.exports = {
          successColor: "#28A745",
          warningColor: "#FFC107",
          accentColor: "#FF6B6B",
-         accentColorB: "#17C3B2"
+         accentColorB: "#17C3B2",
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
