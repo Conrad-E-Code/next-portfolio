@@ -1,48 +1,38 @@
 "use client"
 import {useContext } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import Colors from '../constants/colors'
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
 import { Context } from '@/context/Context'
+import NavBarButtons from './NavBarButtons'
 
 const NavBar = () => {
-    const router = useRouter()
-    const {nav, setNav, clr, setClr, textClr, setTextClr} = useContext(Context)
+    const {nav, setNav, clr, setClr, textClr, setTextClr, setTextIsDark, textIsDark} = useContext(Context)
     const handleNav = () => {
         setNav(!nav)
     }
     useEffect(()=>{
         const changeColor = () => {
+            console.log(textIsDark)
             if(window.scrollY >= 15){
                 setClr("transparent")
                 setTextClr("textColorDark")
+                setTextIsDark(true)
             }
             else {
                 setClr("secondaryColor")
                 setTextClr("textColorLight")
+                setTextIsDark(false)
             }
         }
         window.addEventListener("scroll", changeColor)
     },[])
-    console.log(textClr, typeof textClr)
   return (
-    <div className={`text-${textClr} bg-${clr} z-20 fixed top-0 left-0 w-full ease-in duration-300`}>
+    <div style={{color: Colors[textClr]}} className={`bg-${clr} z-20 fixed top-0 left-0 w-full ease-in duration-300`}>
         <div className={`max-w-[1240px] m-auto flex justify-between items-center`}>
-        <h1 onClick={()=> router.push("/")} className={` cursor-pointer font-bold `}>Conrad Etherington</h1>
-            <ul className='hidden sm:flex mx-5 gap-3 '>
-                <li className='navbar-li'>
-                <Link className='cursor-pointer' href='/about-me'> About Me</Link>
-                </li>
-                <li className='navbar-li'>
-                <Link className='cursor-pointer' href='/projects'> Skills</Link>
-                </li>
-                <li className='navbar-li'>
-                    <Link href="#projects">Projects</Link>
-                </li>
-            </ul>
+{textIsDark ? <NavBarButtons light={false} liClass='navbar-li-dark' /> : <NavBarButtons light={true} liClass='navbar-li' />}
             {/* Mobile Button */}
             <div className='fixed top-1 right-4 sm:hidden z-40 ease-in duration-300'>
                 {!nav ? <AiOutlineMenu onClick={handleNav} size={20}/> : <AiOutlineClose onClick={handleNav} size={20}/>}
