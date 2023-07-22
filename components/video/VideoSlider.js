@@ -24,8 +24,8 @@ const VideoSlider = ({ slides }) => {
       className=" h-screen bg-fixed bg-cover custom-img w-screen p-10"
       id="projects"
     >
-      <h1 className={`text-${textClr} text-xl font-semibold`}>
-        Technical Projects
+      <h1 style={{color: Colors[textClr]}} className={`underline underline-offset-3 text-xl font-bold flex justify-center pr-40`}>
+       My Technical Projects
       </h1>
       <div className=" z-40 flex bg-transparent">
         <div className="relative flex justify-center p-4">

@@ -8,7 +8,7 @@ import Colors from "@/constants/colors";
 
 const Hero = ({ heading, message }) => {
   const { textClr } = useContext(Context);
-  console.log("hero textClr: ", textClr);
+  // console.log("hero textClr: ", textClr);
   return (
     <div className="flex items-center justify-center h-screen bg-fixed bg-cover custom-img">
       {/* OVERLAY */}
