@@ -1,15 +1,16 @@
 "use client"
+import {useContext } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import Colors from '../constants/colors'
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
+import { Context } from '@/context/Context'
+
 const NavBar = () => {
-    const [nav, setNav] = useState(false)
-    const [clr, setClr] = useState(Colors.secondaryColor)
-    const [textClr, setTextClr] = useState(Colors.textColorLight)
     const router = useRouter()
+    const {nav, setNav, clr, setClr, textClr, setTextClr} = useContext(Context)
     const handleNav = () => {
         setNav(!nav)
     }
@@ -17,20 +18,20 @@ const NavBar = () => {
         const changeColor = () => {
             if(window.scrollY >= 15){
                 setClr("transparent")
-                setTextClr(Colors.textColorDark)
+                setTextClr("textColorDark")
             }
             else {
-                setClr(Colors.secondaryColor)
-                setTextClr(Colors.textColorLight)
+                setClr("secondaryColor")
+                setTextClr("textColorLight")
             }
         }
         window.addEventListener("scroll", changeColor)
     },[])
-
+    console.log(textClr, typeof textClr)
   return (
-    <div style={{backgroundColor: `${clr}`}} className='z-20 fixed top-0 left-0 w-full ease-in duration-300'>
-        <div style={{color: textClr}}className='max-w-[1240px] m-auto flex justify-between items-center'>
-        <h1 onClick={()=> router.push("/")} className='cursor-pointer font-bold '>Conrad Etherington</h1>
+    <div className={` bg-${clr} z-20 fixed top-0 left-0 w-full ease-in duration-300`}>
+        <div style={{color: Colors[textClr]}} className={`max-w-[1240px] m-auto flex justify-between items-center`}>
+        <h1 onClick={()=> router.push("/")} className={`cursor-pointer font-bold `}>Conrad Etherington</h1>
             <ul className='hidden sm:flex mx-5 gap-3 '>
                 <li className='navbar-li'>
                 <Link className='cursor-pointer' href='/about-me'> About Me</Link>
@@ -47,9 +48,9 @@ const NavBar = () => {
                 {!nav ? <AiOutlineMenu onClick={handleNav} size={20}/> : <AiOutlineClose onClick={handleNav} size={20}/>}
             </div>
             {/* Mobile Menu */}
-{nav ?             <div style={{color: textClr}} className='sm:hidden absolute top-0 left-0 right-0
+{nav ?             <div className={` text-${textClr} sm:hidden absolute top-0 left-0 right-0
              bottom-0 flex justify-center items-center w-full
-              h-screen bg-secondaryColor ease-in duration-300' >
+              h-screen bg-secondaryColor ease-in duration-300`} >
             <ul className='flex flex-col mx-5 gap-3'>
                 <li className=' text-4xl hover:text-textColorDark'>
                 <Link onClick={handleNav} className='cursor-pointer' href='/about-me'> About Me</Link>

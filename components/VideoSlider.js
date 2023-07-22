@@ -1,27 +1,29 @@
 "use client";
-import React from "react";
+import { useContext, useState } from 'react'
+import { Context } from '@/context/Context'
 import Image from "next/image";
-import { useState } from "react";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 import sliderData from '@/constants/videoSliderData'
 import MyVideo from "./MyVideo";
 
-const Slider = ({ slides }) => {
+
+const VideoSlider = ({ slides }) => {
   const [current, setCurrent] = useState(0);
   const length = sliderData.length;
-
+const {textClr} = useContext(Context)
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
   };
   const prevSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
+
   return (
     <div
-      className="h-screen bg-fixed bg-cover custom-img w-[100%] p-10"
+      className=" flex h-screen bg-fixed bg-cover custom-img w-[100%] p-10"
       id="projects"
     >
-      <h1>Projects</h1>
+      <h1 className={`text-${textClr}`}>Technical Projects</h1>
       <div className=" z-40 flex bg-transparent">
         <div className="relative flex justify-center p-4">
           {sliderData.map((slide, index) => {
@@ -61,4 +63,4 @@ const Slider = ({ slides }) => {
   );
 };
 
-export default Slider;
+export default VideoSlider;
