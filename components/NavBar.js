@@ -16,9 +16,9 @@ const NavBar = () => {
     useEffect(()=>{
         const changeColor = () => {
             console.log(window.scrollY)
-            if(window.scrollY >= 557){
-                setClr("transparent")
-                setTextClr("textColorLight")
+            if(window.scrollY >= 608){
+                setClr("secondaryColor")
+                setTextClr("accentColorB")
                 setTextIsDark(true)
                 return
             }
@@ -38,7 +38,7 @@ const NavBar = () => {
         window.addEventListener("scroll", changeColor)
     },[])
   return (
-    <div style={{color: Colors[textClr]}} className={`bg-${clr} bg-opacity-[0.9] z-20 fixed top-0 left-0 w-full ease-in duration-300`}>
+    <div style={{color: Colors[textClr]}} className={`bg-${clr} bg-opacity-[0.9] z-20 fixed top-0 left-0 right-0 max-w-[100vw]w-full ease-in duration-300`}>
         <div className={`max-w-[1240px] m-auto flex justify-between items-center`}>
 {textIsDark ? <NavBarButtons light={false} liClass='navbar-li-dark' /> : <NavBarButtons light={true} liClass='navbar-li' />}
             {/* Mobile Button */}

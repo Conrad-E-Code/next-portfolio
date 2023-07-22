@@ -21,9 +21,10 @@ const VideoSlider = ({ slides }) => {
 
   return (
     <div
-      className=" h-screen bg-fixed bg-cover custom-img w-screen p-10"
+      className=" h-screen bg-fixed bg-cover custom-img"
       id="projects"
     >
+      <div className="bg-black/50 flex-1">
       <h1 style={{color: Colors[textClr]}} className={`underline underline-offset-3 text-xl font-bold flex justify-center pr-40`}>
        My Technical Projects
       </h1>
@@ -72,6 +73,7 @@ const VideoSlider = ({ slides }) => {
             );
           })}
         </div>
+      </div>
       </div>
     </div>
   );
