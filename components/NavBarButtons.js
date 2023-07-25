@@ -15,7 +15,8 @@ const NavBarButtons = ({liClass, light}) => {
         <Link className='cursor-pointer' href='/about-me'> About Me</Link>
         </li>
         <li className={liClass}>
-        <Link className='cursor-pointer' href='/projects'> Skills</Link>
+        <Link className='cursor-pointer' href='/skills
+        '> Skills</Link>
         </li>
         <li className={liClass}>
             <Link href="#projects">Projects</Link>

@@ -16,12 +16,6 @@ const NavBar = () => {
     useEffect(()=>{
         const changeColor = () => {
             console.log(window.scrollY)
-            if(window.scrollY >= 608){
-                setClr("secondaryColor")
-                setTextClr("accentColorB")
-                setTextIsDark(true)
-                return
-            }
             if(window.scrollY >= 15){
                 setClr("transparent")
                 setTextClr("textColorDark")
@@ -54,10 +48,10 @@ const NavBar = () => {
                 <Link onClick={handleNav} className='cursor-pointer' href='/about-me'> About Me</Link>
                 </li>
                 <li className=' text-4xl hover:text-textColorDark'>
-                <Link className='cursor-pointer' href='/projects'> Projects</Link>
+                <Link onClick={handleNav} className='cursor-pointer' href='/#projects'> Projects</Link>
                 </li>
                 <li className={` text-4xl hover:text-${Colors.textColorDark}`}>
-                    <Link href="#skills">Skills</Link>
+                    <Link onClick={handleNav} href="/skills">Skills</Link>
                 </li>
             </ul>
             </div> : null}
