@@ -49,11 +49,12 @@ const NavBar = () => {
                 <Link onClick={handleNav} className='cursor-pointer' href='/about-me'> About Me</Link>
                 </li>
                 <li className=' text-4xl hover:text-textColorDark'>
-                <Link onClick={handleNav} className='cursor-pointer' href='/#projects'> Projects</Link>
+                <Link onClick={handleNav} className='cursor-pointer' href='/resume'> Resume</Link>
                 </li>
                 <li className={` text-4xl hover:text-${Colors.textColorDark}`}>
                     <Link onClick={handleNav} href="/skills">Skills</Link>
                 </li>
+
             </ul>
             </div> : null}
 
