@@ -5,6 +5,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import Colors from '../constants/colors'
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
+import {WiDaySunny, WiMoonWaxingCrescent2 } from 'react-icons/wi'
 import { Context } from '@/context/Context'
 import NavBarButtons from './NavBarButtons'
 

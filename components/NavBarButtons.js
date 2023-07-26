@@ -1,29 +1,52 @@
 "use client";
-import React from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-
-
-
-const NavBarButtons = ({liClass, light}) => {
-    const router = useRouter()
+import React from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { WiDaySunny, WiMoonWaxingCrescent2 } from "react-icons/wi";
+import { useContext } from "react";
+import { Context } from "@/context/Context";
+const NavBarButtons = ({ liClass, light }) => {
+  const router = useRouter();
+  const { textIsDark, setTextIsDark, setTextClr } = useContext(Context);
   return (
     <>
-    {light ? <h1 onClick={()=> router.push("/")} className={` hover:bg-accentColorB/80 cursor-pointer font-bold py-4 my-0`}>Conrad Etherington</h1> : <h1 onClick={()=> router.push("/")} className={`hover:bg-accentColor/80 cursor-pointer font-bold py-4 my-0`}>Conrad Etherington</h1>}
-    <ul className='hidden sm:flex mx-5 gap-3 '>
-        <li className={liClass}>
-        <Link className='cursor-pointer' href='/about-me'> About Me</Link>
-        </li>
-        <li className={liClass}>
-        <Link className='cursor-pointer' href='/skills
-        '> Skills</Link>
-        </li>
-        <li className={liClass}>
-            <Link href="#projects">Projects</Link>
-        </li>
-    </ul>
-    </>
-  )
-}
+    {textIsDark ? <WiMoonWaxingCrescent2 onClick={()=>{setTextIsDark(!textIsDark)
+setTextClr("textColorLight")}
+} className='cursor-pointer ease-in-out duration-700 rounded hover:bg-textColorLight/80' size={30}/> : <WiDaySunny onClick={()=>{setTextIsDark(!textIsDark)
+    setTextClr("textColorDark")}} className='cursor-pointer ease-in-out duration-700 rounded hover:bg-textColorDark/50' size={30}/>}
+      {light ? (
+        <h1
+          onClick={() => router.push("/")}
+          className={` hover:bg-accentColorB/80 cursor-pointer font-bold py-4 my-0`}
+        >
+          Conrad Etherington
+        </h1>
+      ) : (
+        <h1
+          onClick={() => router.push("/")}
+          className={`hover:bg-accentColor/80 cursor-pointer font-bold py-4 my-0`}
+        >
+          Conrad Etherington
+        </h1>
+      )}
+      <ul className="hidden sm:flex mx-5 gap-3 ">
+        <Link className="cursor-pointer" href="/about-me">
+          <li className={liClass}>About Me</li>
+        </Link>
+        <Link
+          className="cursor-pointer"
+          href="/skills
+        "
+        >
+          <li className={liClass}>Skills</li>
+        </Link>
 
-export default NavBarButtons
+        <Link href="#projects">
+          <li className={liClass}>Projects</li>
+        </Link>
+      </ul>
+    </>
+  );
+};
+
+export default NavBarButtons;

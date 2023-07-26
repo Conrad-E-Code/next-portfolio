@@ -1,47 +1,66 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Image from "next/image";
-import { useState } from "react";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
-import sliderData from '@/constants/sliderData'
-
+import sliderData from "@/constants/sliderData";
+import Colors from "@/constants/colors";
+import {Context} from "@/context/Context";
 const Slider = ({ slides }) => {
+  const { textClr } = useContext(Context);
   const [current, setCurrent] = useState(0);
+  const [autoScrollActive, setAutoScrollActive] = useState(true); // Track auto-scrolling state
+  const [showDetail, setShowDetail] = useState(false);
   const length = sliderData.length;
+  const autoScrollInterval = 5000; // Adjust this value to change the auto-scrolling interval in milliseconds (5 seconds in this case).
+
+  useEffect(() => {
+    let interval;
+
+    const autoScroll = () => {
+      if (autoScrollActive) {
+        setCurrent((prevCurrent) => (prevCurrent === length - 1 ? 0 : prevCurrent + 1));
+      }
+    };
+
+    if (autoScrollActive) {
+      interval = setInterval(autoScroll, autoScrollInterval);
+    }
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [length, autoScrollActive]);
 
   const nextSlide = () => {
-    setCurrent(current === length - 1 ? 0 : current + 1);
+    setCurrent((prevCurrent) => (prevCurrent === length - 1 ? 0 : prevCurrent + 1));
+    setAutoScrollActive(false); // Turn off auto-scroll when arrow is clicked
   };
+
   const prevSlide = () => {
-    setCurrent(current === 0 ? length - 1 : current - 1);
+    setCurrent((prevCurrent) => (prevCurrent === 0 ? length - 1 : prevCurrent - 1));
+    setAutoScrollActive(false); // Turn off auto-scroll when arrow is clicked
   };
+
   return (
-    <div
-      className="h-screen bg-fixed bg-cover custom-img w-[100%] p-10"
-      id="skills"
-    >
-      <h1>Skills and Technologies</h1>
-      <div className=" z-40 flex bg-transparent">
+    <div className="h-screen bg-fixed bg-cover custom-img w-[100%] p-10" id="skills">
+      <div className="z-40 flex bg-transparent">
         <div className="relative flex justify-center p-4">
           {sliderData.map((slide, index) => {
             return (
-              <div key={index + "keybo"}>
+              <div  className="flex flex-col sm:flex-row bg-primaryColor/50">
+              <div key={index + "keybo"} className="mt-[15vh]">
                 <FaArrowCircleLeft
                   onClick={prevSlide}
-                  className="z-40 cursor-pointer
-                             text-textColorLight/80 absolute left-[20px] top-[20px]"
+                  className="z-40 cursor-pointer text-textColorLight/80 absolute left-[20px] top-[20px]"
                   size={50}
                 />
                 <div
-                  className={
-                    index === current
-                      ? "opacity-[1] ease-in duration-1000"
-                      : "opacity-0"
-                  }
+                  className={index === current ? "opacity-[1] ease-in duration-1000" : "opacity-0"}
                 >
                   {index === current && (
-                    <Image
-                      onClick={() => console.log(slide.info)}
+                    <Image onClick={()=>{
+                      setShowDetail((prev) => prev = !prev)
+                      console.log(showDetail)}} className="transform-gpu hover:scale-110 transition-transform duration-300"
                       src={slide.image}
                       alt="slide"
                       width={250}
@@ -51,10 +70,28 @@ const Slider = ({ slides }) => {
                 </div>
                 <FaArrowCircleRight
                   onClick={nextSlide}
-                  className="z-40 cursor-pointer
-                             text-textColorLight/80 absolute right-[20px] top-[20px]"
+                  className="z-40 cursor-pointer text-textColorLight/80 absolute right-[20px] top-[20px]"
                   size={50}
                 />
+              </div>
+
+              {index === current && (
+              <div>
+              <ul className="">
+                <li>
+                  <div style={{color: Colors[textClr]}} className=" bg-primaryColor/50 p-4 text-center text-5xl">
+                    {slide.info}
+                  </div>
+                </li>
+                <li>
+                  <div style={{color: Colors[textClr]}} className=" text-3xl flex-col bg-primaryColor/50 p-4 w-[45vw]">
+                    {slide.message}
+                  </div>
+                </li>
+              </ul>
+            </div>
+                  )}
+
               </div>
             );
           })}

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { useContext } from "react";
-import { Context } from "@/context/Context";
+import {Context } from "@/context/Context";
 import Colors from "@/constants/colors";
 import Hero from "@/components/Hero";
 import Slider from "@/components/Slider";
@@ -34,7 +34,7 @@ const page = () => {
           message="Skills and Technologies"
           heading="Conrad Etherington"
           buttonText={"Explore"}
-          buttonTextAlt={"Talents"}
+          buttonTextAlt={"Possibilities"}
           buttonTarget={"skills"}
         />
         <Slider />
