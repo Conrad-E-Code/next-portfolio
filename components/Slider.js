@@ -51,7 +51,8 @@ const Slider = ({ slides }) => {
               <div key={index + "keybo"} className="mt-[15vh]">
                 <FaArrowCircleLeft
                   onClick={prevSlide}
-                  className="z-40 cursor-pointer text-textColorLight/80 absolute left-[20px] top-[20px]"
+                  style={{color: Colors[textClr]}}
+                  className={`z-40 cursor-pointer absolute left-[20px] top-[20px] ease-in-out duration-1000`}
                   size={50}
                 />
                 <div
@@ -60,7 +61,7 @@ const Slider = ({ slides }) => {
                   {index === current && (
                     <Image onClick={()=>{
                       setShowDetail((prev) => prev = !prev)
-                      console.log(showDetail)}} className="transform-gpu hover:scale-110 transition-transform duration-300"
+                      console.log(showDetail)}} className="transform-gpu hover:scale-110 transition-transform  duration-300"
                       src={slide.image}
                       alt="slide"
                       width={250}
@@ -69,22 +70,23 @@ const Slider = ({ slides }) => {
                   )}
                 </div>
                 <FaArrowCircleRight
+                style={{color: Colors[textClr]}}
                   onClick={nextSlide}
-                  className="z-40 cursor-pointer text-textColorLight/80 absolute right-[20px] top-[20px]"
+                  className="z-40 cursor-pointer absolute right-[20px] top-[20px] ease-in-out duration-1000"
                   size={50}
                 />
               </div>
 
               {index === current && (
               <div>
-              <ul className="">
+              <ul className="h-[80vh] overflow-auto">
                 <li>
-                  <div style={{color: Colors[textClr]}} className=" bg-primaryColor/50 p-4 text-center text-5xl">
+                  <div style={{color: Colors[textClr]}} className=" bg-primaryColor/50 p-4 m-4 mt-10 text-center text-5xl ease-in-out duration-1000">
                     {slide.info}
                   </div>
                 </li>
                 <li>
-                  <div style={{color: Colors[textClr]}} className=" text-3xl flex-col bg-primaryColor/50 p-4 w-[45vw]">
+                  <div style={{color: Colors[textClr]}} className="text-xl font-semibold flex-col bg-primaryColor/50 p-4 w-[45vw] ease-in-out duration-1000">
                     {slide.message}
                   </div>
                 </li>

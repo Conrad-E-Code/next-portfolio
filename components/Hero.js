@@ -6,7 +6,7 @@ import { useContext } from "react";
 import Colors from "@/constants/colors";
 
 
-const Hero = ({ heading, message, buttonText, buttonTextAlt, buttonTarget}) => {
+const Hero = ({ heading, message, buttonText, buttonTextAlt, buttonTarget, bg, smbg}) => {
   const { textClr } = useContext(Context);
   function handleClick() {
     console.log(buttonTarget)
@@ -16,7 +16,7 @@ const Hero = ({ heading, message, buttonText, buttonTextAlt, buttonTarget}) => {
   }
   // console.log("hero textClr: ", textClr);
   return (
-    <div className="flex items-center justify-center h-screen bg-fixed bg-cover custom-img">
+    <div className={`${bg} sm:${smbg} flex items-center justify-center h-screen bg-fixed bg-cover `}>
       {/* OVERLAY */}
 
       <div className="absolute top-0 left-0 right-0 bottom-0 bg-primaryColor/70 z-[2]" />

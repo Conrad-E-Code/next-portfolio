@@ -9,22 +9,22 @@ const NavBarButtons = ({ liClass, light }) => {
   const router = useRouter();
   const { textIsDark, setTextIsDark, setTextClr } = useContext(Context);
   return (
-    <>
+    <div className={`flex`}>
     {textIsDark ? <WiMoonWaxingCrescent2 onClick={()=>{setTextIsDark(!textIsDark)
 setTextClr("textColorLight")}
-} className='cursor-pointer ease-in-out duration-700 rounded hover:bg-textColorLight/80' size={30}/> : <WiDaySunny onClick={()=>{setTextIsDark(!textIsDark)
-    setTextClr("textColorDark")}} className='cursor-pointer ease-in-out duration-700 rounded hover:bg-textColorDark/50' size={30}/>}
+} className='cursor-pointer ease-in-out duration-700 rounded hover:bg-textColorLight/80' size={40}/> : <WiDaySunny onClick={()=>{setTextIsDark(!textIsDark)
+    setTextClr("textColorDark")}} className='cursor-pointer ease-in-out duration-700 rounded hover:bg-textColorDark/50' size={40}/>}
       {light ? (
         <h1
           onClick={() => router.push("/")}
-          className={` hover:bg-accentColorB/80 cursor-pointer font-bold py-4 my-0`}
+          className={` hover:bg-accentColorB/80 cursor-pointer font-bold py-4 my-0 ml-10`}
         >
           Conrad Etherington
         </h1>
       ) : (
         <h1
           onClick={() => router.push("/")}
-          className={`hover:bg-accentColor/80 cursor-pointer font-bold py-4 my-0`}
+          className={`hover:bg-accentColor/80 cursor-pointer font-bold py-4 my-0 ml-10`}
         >
           Conrad Etherington
         </h1>
@@ -45,7 +45,7 @@ setTextClr("textColorLight")}
           <li className={liClass}>Projects</li>
         </Link>
       </ul>
-    </>
+    </div>
   );
 };
 
