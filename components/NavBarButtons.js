@@ -41,8 +41,8 @@ setTextClr("textColorLight")}
           <li className={liClass}>Skills</li>
         </Link>
 
-        <Link href="#projects">
-          <li className={liClass}>Projects</li>
+        <Link href="/resume">
+          <li className={liClass}>Resume</li>
         </Link>
       </ul>
     </div>
