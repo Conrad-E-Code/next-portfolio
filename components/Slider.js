@@ -9,6 +9,7 @@ const Slider = ({ slides }) => {
   const { textClr } = useContext(Context);
   const [current, setCurrent] = useState(0);
   const [autoScrollActive, setAutoScrollActive] = useState(true); // Track auto-scrolling state
+  const [showDetail, setShowDetail] = useState(false);
   const length = sliderData.length;
   const autoScrollInterval = 5000; // Adjust this value to change the auto-scrolling interval in milliseconds (5 seconds in this case).
 
@@ -46,8 +47,8 @@ const Slider = ({ slides }) => {
         <div className="relative flex justify-center p-4">
           {sliderData.map((slide, index) => {
             return (
-              <div onClick={()=>{console.log(slide.info)}} className="flex flex-col sm:flex-row">
-              <div key={index + "keybo"} className="">
+              <div  className="flex flex-col sm:flex-row bg-primaryColor/50">
+              <div key={index + "keybo"} className="mt-[15vh]">
                 <FaArrowCircleLeft
                   onClick={prevSlide}
                   className="z-40 cursor-pointer text-textColorLight/80 absolute left-[20px] top-[20px]"
@@ -57,7 +58,9 @@ const Slider = ({ slides }) => {
                   className={index === current ? "opacity-[1] ease-in duration-1000" : "opacity-0"}
                 >
                   {index === current && (
-                    <Image className="transform-gpu hover:scale-110 transition-transform duration-300"
+                    <Image onClick={()=>{
+                      setShowDetail((prev) => prev = !prev)
+                      console.log(showDetail)}} className="transform-gpu hover:scale-110 transition-transform duration-300"
                       src={slide.image}
                       alt="slide"
                       width={250}
