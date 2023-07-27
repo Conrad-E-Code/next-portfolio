@@ -1,11 +1,13 @@
-import apiIcon from "../constants/images/api-icon.png";
-import elephant from "../constants/images/elephant.png";
-import htmlIcon from "../constants/images/html_icon.png";
-import railsLogo from "../constants/images/rails-logo.png";
-import rubyIcon from "../constants/images/ruby.png";
-import jsIcon from "../constants/images/Unofficial_JavaScript_logo_2.svg.png";
-import nextIcon from "../constants/images/Nextjs-logo.svg.png";
-import reactIcon from "../constants/images/React-icon.svg.png";
+
+import apiIcon from "../public/api-icon.png"
+import elephant from "../public/elephant.png"
+import htmlIcon from "../public/html_icon.png"
+import jsIcon from "../public/Unofficial_JavaScript_logo_2.svg.png"
+import nextIcon from "../public/Nextjs-logo.svg.png"
+import railsLogo from "../public/rails-logo.png"
+import reactIcon from "../public/React-icon.svg.png"
+import rubyIcon from "../public/ruby.png"
+
 const sliderData = [
     {info: "Next.js",
     message: "Next.js is an open-source React front-end development web framework created by Vercel that enables functionality such as server-side rendering and generating static websites for React based web applications. It is a production-ready framework that allows developers to quickly create static and dynamic JAMstack websites and is used widely by many large companies.",
