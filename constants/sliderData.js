@@ -7,18 +7,28 @@ import nextIcon from "../public/Nextjs-logo.svg.png"
 import railsLogo from "../public/rails-logo.png"
 import reactIcon from "../public/React-icon.svg.png"
 import rubyIcon from "../public/ruby.png"
+import tailwindIcon from "../public/Tailwind_CSS_Logo.svg.png"
+import mongoLogo from "../public/mongo_logo_lime.png"
+import cssLogo from "../public/CSS3_logo.png"
 
 const sliderData = [
+    {info: "React Native",
+    message: "React Native is an open-source mobile application framework created by Facebook. It is used to develop applications for Android, iOS, Web and UWP by enabling developers to use React along with native platform capabilities.",
+    image: reactIcon},
+    {
+        info: "MongoDB",
+        message: "MongoDB is a source-available cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas. MongoDB is developed by MongoDB Inc. and licensed under the Server Side Public License.",
+        image: mongoLogo
+    },
+    {info: "Tailwind CSS",
+    message: "This app was styled with Tailwind CSS. Tailwind CSS is a utility-first CSS framework for rapidly building custom user interfaces. Tailwind CSS is a highly customizable, low-level CSS framework that gives you all of the building blocks you need to build bespoke designs without any annoying opinionated styles you have to fight to override.",
+        image: tailwindIcon},
     {info: "Next.js",
-    message: "Next.js is an open-source React front-end development web framework created by Vercel that enables functionality such as server-side rendering and generating static websites for React based web applications. It is a production-ready framework that allows developers to quickly create static and dynamic JAMstack websites and is used widely by many large companies.",
+    message: "This app was created using Next.js. Next is an open-source React front-end development web framework created by Vercel that enables functionality such as server-side rendering and generating static websites for React based web applications. It is a production-ready framework that allows developers to quickly create static and dynamic JAMstack websites and is used widely by many large companies.",
      image: nextIcon},
      {info: "React",
     message: "React is an open-source, front end, JavaScript library for building user interfaces or UI components. It is maintained by Facebook and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications.",
      image: reactIcon},
-     {info: "React Native",
-     message: "React Native is an open-source mobile application framework created by Facebook. It is used to develop applications for Android, iOS, Web and UWP by enabling developers to use React along with native platform capabilities.",
-     image: reactIcon},
-     
     {info: "REST API",
     message: "Representational State Transfer Application Programming Interface (REST API) is a software architectural style that defines a set of constraints to be used for creating Web services. Web services that conform to the REST architectural style, called RESTful Web services, provide interoperability between computer systems on the Internet. RESTful Web services allow the requesting systems to access and manipulate textual representations of Web resources by using a uniform and predefined set of stateless operations.",
      image: apiIcon},
@@ -36,7 +46,10 @@ const sliderData = [
      image: rubyIcon },
     {info: "JavaScript",
     message: "JavaScript, often abbreviated as JS, is a programming language that conforms to the ECMAScript specification. JavaScript is high-level, often just-in-time compiled, and multi-paradigm. It has curly-bracket syntax, dynamic typing, prototype-based object-orientation, and first-class functions.",
-     image:jsIcon}
+     image:jsIcon},
+     {info: "CSS",
+    message: "Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language such as HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.",
+     image: cssLogo}
 ];
 
 export default sliderData
