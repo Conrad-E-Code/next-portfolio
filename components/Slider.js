@@ -43,12 +43,12 @@ const Slider = ({ slides }) => {
 
   return (
     <div className="h-screen bg-fixed bg-cover custom-img" id="skills">
-      <div className="z-40 flex bg-transparent">
+      <div className="z-40 flex bg-transparent justify-center">
         <div className="relative flex justify-center p-4">
           {sliderData.map((slide, index) => {
             return (
               <div  className="flex flex-col sm:flex-row bg-primaryColor/50">
-              <div key={index + "keybo"} className="mt-[15vh]">
+              <div key={index + "keybo"} className="mt-[5vh]">
                 <FaArrowCircleLeft
                   onClick={prevSlide}
                   style={{color: Colors[textClr]}}
@@ -61,11 +61,11 @@ const Slider = ({ slides }) => {
                   {index === current && (
                     <Image onClick={()=>{
                       setShowDetail((prev) => prev = !prev)
-                      console.log(showDetail)}} className="transform-gpu hover:scale-110 transition-transform  duration-300"
+                      console.log(showDetail)}} className="transform-gpu hover:scale-110 transition-transform  duration-300 max-h-[40vh]"
                       src={slide.image}
                       alt="slide"
                       width={250}
-                      height={100}
+                      height={250}
                     />
                   )}
                 </div>
@@ -79,14 +79,14 @@ const Slider = ({ slides }) => {
 
               {index === current && (
               <div>
-              <ul className="h-[80vh] overflow-auto">
+              <ul className="">
                 <li>
                   <div style={{color: Colors[textClr]}} className=" bg-primaryColor/50 p-4 m-4 mt-10 text-center text-5xl ease-in-out duration-1000">
                     {slide.info}
                   </div>
                 </li>
-                <li>
-                  <div style={{color: Colors[textClr]}} className="text-xl font-semibold flex-col bg-primaryColor/50 p-4 w-[45vw] ease-in-out duration-1000">
+                <li className="">
+                  <div style={{color: Colors[textClr]}} className="overflow-scroll text-xl font-semibold flex-col bg-primaryColor/50 p-4 w-[75vw] ease-in-out duration-1000 h-[35vh] sm:h-[65vh]">
                     {slide.message}
                   </div>
                 </li>
