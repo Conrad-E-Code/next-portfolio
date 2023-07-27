@@ -44,15 +44,15 @@ const Slider = ({ slides }) => {
   return (
     <div className="h-screen bg-fixed bg-cover custom-img" id="skills">
       <div className="z-40 flex bg-transparent justify-center">
-        <div className="relative flex justify-center p-4">
+        <div className="relative flex justify-center">
           {sliderData.map((slide, index) => {
             return (
               <div  className="flex flex-col sm:flex-row bg-primaryColor/50">
-              <div key={index + "keybo"} className="mt-[5vh]">
+              <div key={index + "keybo"} className="">
                 <FaArrowCircleLeft
                   onClick={prevSlide}
                   style={{color: Colors[textClr]}}
-                  className={`z-40 cursor-pointer absolute left-[20px] top-[20px] ease-in-out duration-1000`}
+                  className={`z-40 cursor-pointer absolute left-[20px] top-[35px] ease-in-out duration-1000`}
                   size={50}
                 />
                 <div
@@ -72,7 +72,7 @@ const Slider = ({ slides }) => {
                 <FaArrowCircleRight
                 style={{color: Colors[textClr]}}
                   onClick={nextSlide}
-                  className="z-40 cursor-pointer absolute right-[20px] top-[20px] ease-in-out duration-1000"
+                  className="z-40 cursor-pointer absolute right-[20px] top-[35px] ease-in-out duration-1000"
                   size={50}
                 />
               </div>
