@@ -29,7 +29,7 @@ const page = () => {
 
   return (
     <div className="">
-      <div className="transition ease-in-out h-screen w-screen bg-fixed bg-cover custom-img duration-300">
+      <div className="transition ease-in-out h-screen bg-fixed bg-cover custom-img duration-300">
         <Hero
           message="Skills and Technologies"
           heading="Conrad Etherington"

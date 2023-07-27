@@ -42,7 +42,7 @@ const Slider = ({ slides }) => {
   };
 
   return (
-    <div className="h-screen bg-fixed bg-cover custom-img w-[100%] p-10" id="skills">
+    <div className="h-screen bg-fixed bg-cover custom-img" id="skills">
       <div className="z-40 flex bg-transparent">
         <div className="relative flex justify-center p-4">
           {sliderData.map((slide, index) => {
