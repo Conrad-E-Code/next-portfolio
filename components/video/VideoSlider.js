@@ -63,7 +63,7 @@ const VideoSlider = ({ slides }) => {
                 />
                 {index === current &&  (
                   <div style={{ color: Colors[textClr]}}
-                    className={`text-xl font-semibold max-w-[460px] bg-accentColorB bg-opacity-[0.8]`}
+                    className={`text-xl font-semibold max-w-[85%] bg-accentColorB bg-opacity-[0.8]`}
                   >
                     <h1 className="text-3xl font-bold">{slide.title}</h1>
                     <p className="">{slide.info}</p>
