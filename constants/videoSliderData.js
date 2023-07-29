@@ -12,7 +12,7 @@ const sliderData = [
     gitLink: "https://github.com/Conrad-E-Code/Campus-Broadcaster",
     info: "A full stack social media app for students. hover over video and click unmute to hear sound.",
     videoUrl:
-      "https://www.youtube-nocookie.com/embed/p9Nh8Tv74T0?autoplay=1&mute=1&loop=1",
+      "https://www.youtube-nocookie.com/embed/gmRb61TAfho?autoplay=1&mute=1&loop=1",
   },
   {
     title: "Do_ber",
