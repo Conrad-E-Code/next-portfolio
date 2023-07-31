@@ -34,6 +34,9 @@ export const POST = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error });
+    return new Response(
+        JSON.stringify({ error: "Something went wrong!" }),
+        { status: 500 }
+    );
   }
 };
