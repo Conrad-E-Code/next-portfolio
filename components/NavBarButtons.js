@@ -3,9 +3,18 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { WiDaySunny, WiMoonWaxingCrescent2 } from "react-icons/wi";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Context } from "/context/Context";
+
 const NavBarButtons = ({ liClass, light }) => {
+
+  //state and handler for dropdown menu
+  const [dropDown, setDropDown] = useState(false);
+  const handleDropdownToggle = () => {
+    setDropDown(!isDropdownOpen);
+  };
+
+
   const router = useRouter();
   const { textIsDark, setTextIsDark, setTextClr } = useContext(Context);
   return (
