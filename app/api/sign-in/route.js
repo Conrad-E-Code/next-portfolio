@@ -26,11 +26,11 @@ export const POST = async (req, res) => {
         username: user.username,
         id: user._id,
       })
-      const encryptedSession = sealData(session, {
+      const encryptedSession = await sealData(session, {
         password: process.env.SECRET_COOKIE_PASSWORD})
       // cookies().set("user", user.id, {secure: true} )
       return new Response(JSON.stringify(user), { status: 200,
-        headers: { 'Set-cookie': `nextUserSession=${encryptedSession}`}});
+        headers: {'Set-cookie': `nextUserSession=${encryptedSession}`}});
     } else {
       return new Response(
         JSON.stringify({ message: "Password does not match" }),
