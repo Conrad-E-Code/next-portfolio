@@ -5,9 +5,29 @@ import { Context } from '/context/Context';
 import Colors from '/constants/colors';
 import Hero from '/components/Hero';
 import { useRouter } from 'next/router';
+import Cookies from "js-cookie"
+import { useEffect } from 'react';
 
 const page = () => {
-    const { nav, setNav, clr, setClr, textClr, setTextClr, setTextIsDark, textIsDark } = useContext(Context)
+    useEffect(() => {
+        // Function to fetch user data from the session
+        async function fetchUserData() {
+          try {
+            const userCookie = Cookies.get("nextUserSession");
+            if (userCookie) {
+              const userData = JSON.parse(userCookie);
+              console.log(userData, "userDAta")
+              setUser(userData);
+            }
+          } catch (error) {
+            console.error("Error fetching user data:", error);
+          }
+        }
+    
+        fetchUserData();
+      }, []);
+    const { nav, setNav, clr, setClr, textClr, setTextClr, setTextIsDark, textIsDark, user, setUser } = useContext(Context)
+
 
     const header = `text-4xl font-bold text-${Colors[textClr]}`
     const paragraph = "text-xl font-semibold"

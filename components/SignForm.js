@@ -1,10 +1,10 @@
 "use client";
-
 import { useState } from "react";
 import { useContext } from "react";
 import { Context } from "/context/Context";
 import Colors from "/constants/colors";
 import { useRouter } from "next/navigation";
+import {unsealData} from "iron-session/edge"
 
 const SignForm = ({}) => {
     const { setUser } = useContext(Context);
@@ -38,7 +38,8 @@ const handleLogin = async (e) => {
             const data = await response.json();
 
             if (response.ok) {
-                setUser({ username: data.username, id: data._id });
+                // setUser(userCookie);
+                // console.log(cookies())
                 console.log("data", data);
                 // router.push("/admin");
             } else {

@@ -2,12 +2,18 @@
 import React from "react";
 import MyVideo from "./video/MyVideo";
 import { Context } from "../context/Context";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Colors from "/constants/colors";
+
 
 
 const Hero = ({ heading, message, buttonText, buttonTextAlt, buttonTarget, bg, smbg}) => {
   const { textClr } = useContext(Context);
+  useEffect(()=>{
+    function getUser(){
+    }
+    getUser();
+  },[])
   function handleClick() {
     console.log(buttonTarget)
     const getTarget = document.getElementById(buttonTarget);
@@ -39,6 +45,7 @@ const Hero = ({ heading, message, buttonText, buttonTextAlt, buttonTarget, bg, s
         >
           {textClr === "textColorLight" ? buttonText : buttonTextAlt}
         </button>
+        {"Hello World!"}
       </div>
     </div>
   );
