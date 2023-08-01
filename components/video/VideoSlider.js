@@ -1,11 +1,11 @@
 "use client";
 import { useContext, useState } from "react";
-import { Context } from "@/context/Context";
+import { Context } from "/context/Context";
 import Image from "next/image";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
-import sliderData from "@/constants/videoSliderData";
+import sliderData from "/constants/videoSliderData";
 import MyVideo from "./MyVideo";
-import Colors from "@/constants/colors";
+import Colors from "/constants/colors";
 
 const VideoSlider = ({ slides }) => {
   const { current, setCurrent } = useContext(Context);

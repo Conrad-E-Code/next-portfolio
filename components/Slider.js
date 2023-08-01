@@ -2,9 +2,9 @@
 import React, { useEffect, useState, useContext } from "react";
 import Image from "next/image";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
-import sliderData from "@/constants/sliderData";
-import Colors from "@/constants/colors";
-import {Context} from "@/context/Context";
+import sliderData from "/constants/sliderData";
+import Colors from "/constants/colors";
+import {Context} from "/context/Context";
 const Slider = ({ slides }) => {
   const { textClr } = useContext(Context);
   const [current, setCurrent] = useState(0);
