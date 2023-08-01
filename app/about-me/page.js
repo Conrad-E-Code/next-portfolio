@@ -1,58 +1,50 @@
 "use client";
-import React from 'react'
-import { useContext } from 'react';
+import Image from 'next/image';
+import React from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Context } from '/context/Context';
 import Colors from '/constants/colors';
 import Hero from '/components/Hero';
-import { useRouter } from 'next/router';
-import Cookies from "js-cookie"
-import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import SignForm from '../../components/SignForm';
 
-const page = () => {
-    useEffect(() => {
-        // Function to fetch user data from the session
-        async function fetchUserData() {
-          try {
-            const userCookie = Cookies.get("nextUserSession");
-            if (userCookie) {
-              const userData = JSON.parse(userCookie);
-              console.log(userData, "userDAta")
-              setUser(userData);
-            }
-          } catch (error) {
-            console.error("Error fetching user data:", error);
-          }
-        }
-    
-        fetchUserData();
-      }, []);
-    const { nav, setNav, clr, setClr, textClr, setTextClr, setTextIsDark, textIsDark, user, setUser } = useContext(Context)
+const AboutMe = () => {
+  const router = useRouter();
+  const { textClr } = useContext(Context);
+  const [flashing, setFlashing] = useState(false);
 
+  // Start the flashing effect when the component mounts
+  useEffect(() => {
+    const flashingInterval = setInterval(() => {
+      setFlashing(prevFlashing => !prevFlashing);
+    }, 750); // Adjust the interval to control the speed of the flashing effect
 
-    const header = `text-4xl font-bold text-${Colors[textClr]}`
-    const paragraph = "text-xl font-semibold"
+    return () => {
+      clearInterval(flashingInterval);
+    };
+  }, []);
 
-    console.log(header)
   return (
-    <div className='pt-16'>
-        <div className='flex flex-col items-center justify-center'>
-            <h1 className={`${header}`}>About Me</h1>
-            <p className='text-xl font-semibold'>I am a full-stack web developer with a passion for creating beautiful, responsive, and accessible websites and applications.</p>
+    <div>
+      <Hero message="Glad you could make it!" heading="CI/CD Pipeline" buttonText={"See What's New!"} buttonTextAlt={"Coming Soon."} buttonTarget={"coming-soon"} bg="pipeline"/>
+      <div style={{color: Colors[textClr]}} id="coming-soon" className='h-screen bg-fixed bg-cover small-pipeline flex justify-center flex-col items-center'>
+        <div
+          id="flasher"
+          onClick={() => { router.push("/projects") }}
+          className={`w-[45vw] bg-amber-400 h-[20vh] ${flashing ? 'bg-opacity-30' : 'bg-opacity-80'} hover:opacity-100 cursor-pointer ease-in-out duration-700 text-center rounded justify-center`}
+        >
+          RENDERING PROJECTS
         </div>
-        <div className='flex flex-col items-center justify-center'>
-            <h1 className={`${header}`}>My Story</h1>
-            <p className={`${paragraph}`}>I am a full-stack web developer with a passion for creating beautiful, responsive, and accessible websites and applications.</p>
+        <div
+          id="flasher"
+          onClick={() => { router.push("/sign-up-form") }}
+          className={`w-[45vw] bg-red-600 h-[20vh] ${!flashing ? 'bg-opacity-30' : 'bg-opacity-80'} hover:opacity-100 cursor-pointer  text-center rounded justify-center mt-10`}
+        >
+          ADDING USERS TO MONGO DB ATLAS
         </div>
-        <div className='flex flex-col items-center justify-center'>
-            <h1 className={`${header}`}>My Values</h1>
-            <p className={`${paragraph}`}>I am a full-stack web developer with a passion for creating beautiful, responsive, and accessible websites and applications.</p>
-        </div>
-        <div className='flex flex-col items-center justify-center'>
-            <h1 className={`${header}`}>My Interests</h1>
-            <p className={`${paragraph}`}>I am a full-stack web developer with a passion for creating beautiful, responsive, and accessible websites and applications.</p>
-        </div>
+      </div>
     </div>
   )
 }
 
-export default page
+export default AboutMe;
