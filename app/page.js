@@ -1,5 +1,5 @@
 "use client";
-import Hero from '@/components/Hero'
+import Hero from '/components/Hero'
 import VideoSlider from '../components/video/VideoSlider'
 import { useEffect } from 'react';
 

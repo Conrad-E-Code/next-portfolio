@@ -3,6 +3,7 @@ import { createContext, useState, useEffect } from "react";
 import Colors from "../constants/colors";
 export const Context = createContext();
 export const ContextProvider = ({ children }) => {
+
   //user
   const [user, setUser] = useState(null);
   //toggle for mobile menu nav
@@ -28,6 +29,8 @@ export const ContextProvider = ({ children }) => {
         setTextIsDark,
         user,
         setUser,
+        authUser,
+        setAuthUser
       }}
     >
       {children}

@@ -1,8 +1,8 @@
- import NavBar from '@/components/NavBar'
-import '@/styles/globals.css'
+import NavBar from '/components/NavBar'
+import '/styles/globals.css'
 import { Inter } from 'next/font/google'
 import { Raleway } from 'next/font/google'
-import { ContextProvider } from '@/context/Context'
+import { ContextProvider } from '/context/Context'
 
 const inter = Inter({ subsets: ['latin'] })
 const raleway = Raleway({

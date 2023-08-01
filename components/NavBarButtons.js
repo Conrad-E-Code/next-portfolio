@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { WiDaySunny, WiMoonWaxingCrescent2 } from "react-icons/wi";
 import { useContext } from "react";
-import { Context } from "@/context/Context";
+import { Context } from "/context/Context";
 const NavBarButtons = ({ liClass, light }) => {
   const router = useRouter();
   const { textIsDark, setTextIsDark, setTextClr } = useContext(Context);

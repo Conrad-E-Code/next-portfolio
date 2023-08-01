@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useContext } from "react";
-import { Context } from "@/context/Context";
-import Colors from "@/constants/colors";
+import { Context } from "/context/Context";
+import Colors from "/constants/colors";
 import { useRouter } from "next/navigation";
 
 const SignForm = ({}) => {
@@ -40,7 +40,7 @@ const handleLogin = async (e) => {
             if (response.ok) {
                 setUser({ username: data.username, id: data._id });
                 console.log("data", data);
-                router.push("/admin");
+                // router.push("/admin");
             } else {
                 setErrors([data.error]);
             }

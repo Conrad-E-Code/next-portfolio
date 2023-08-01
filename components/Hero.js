@@ -3,7 +3,7 @@ import React from "react";
 import MyVideo from "./video/MyVideo";
 import { Context } from "../context/Context";
 import { useContext } from "react";
-import Colors from "@/constants/colors";
+import Colors from "/constants/colors";
 
 
 const Hero = ({ heading, message, buttonText, buttonTextAlt, buttonTarget, bg, smbg}) => {

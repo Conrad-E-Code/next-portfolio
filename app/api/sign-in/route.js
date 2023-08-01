@@ -1,12 +1,8 @@
-import { connectToDB } from "@/utils/database";
-import User from "@/models/user";
+import { connectToDB } from "/utils/database";
+import User from "/models/user";
 import bcrypt, { hash } from "bcrypt";
 
 export const POST = async (req, res) => {
-  console.log("MY REQUEST");
-  console.log(
-    "**************************************************************************************"
-  );
   const { username, password } = await req.json();
   try {
     console.log(username, password);
@@ -25,6 +21,8 @@ export const POST = async (req, res) => {
     console.log(user);
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (passwordMatch) {
+      setAuthUser(username)
+      // cookies().set("user", user.id, {secure: true} )
       return new Response(JSON.stringify(user), { status: 200 });
     } else {
       return new Response(
