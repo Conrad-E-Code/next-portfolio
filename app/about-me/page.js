@@ -1,9 +1,9 @@
 "use client";
 import React from 'react'
 import { useContext } from 'react';
-import { Context } from '@/context/Context';
-import Colors from '@/constants/colors';
-import Hero from '@/components/Hero';
+import { Context } from '/context/Context';
+import Colors from '/constants/colors';
+import Hero from '/components/Hero';
 import { useRouter } from 'next/router';
 
 const page = () => {

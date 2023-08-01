@@ -1,10 +1,10 @@
 "use client";
 import React, { useEffect } from "react";
 import { useContext } from "react";
-import {Context } from "@/context/Context";
-import Colors from "@/constants/colors";
-import Hero from "@/components/Hero";
-import Slider from "@/components/Slider";
+import {Context } from "/context/Context";
+import Colors from "/constants/colors";
+import Hero from "/components/Hero";
+import Slider from "/components/Slider";
 import { useRouter } from "next/navigation";
 
 const page = () => {
