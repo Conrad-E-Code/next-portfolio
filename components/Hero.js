@@ -45,7 +45,6 @@ const Hero = ({ heading, message, buttonText, buttonTextAlt, buttonTarget, bg, s
         >
           {textClr === "textColorLight" ? buttonText : buttonTextAlt}
         </button>
-        {"Hello World!"}
       </div>
     </div>
   );
