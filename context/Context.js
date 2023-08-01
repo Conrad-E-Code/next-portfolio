@@ -28,9 +28,7 @@ export const ContextProvider = ({ children }) => {
         textIsDark,
         setTextIsDark,
         user,
-        setUser,
-        authUser,
-        setAuthUser
+        setUser
       }}
     >
       {children}

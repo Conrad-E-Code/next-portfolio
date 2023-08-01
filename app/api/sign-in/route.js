@@ -1,6 +1,7 @@
 import { connectToDB } from "/utils/database";
 import User from "/models/user";
 import bcrypt, { hash } from "bcrypt";
+import { sealData } from "iron-session";
 
 export const POST = async (req, res) => {
   const { username, password } = await req.json();
@@ -21,9 +22,15 @@ export const POST = async (req, res) => {
     console.log(user);
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (passwordMatch) {
-      setAuthUser(username)
+      const session = JSON.stringify({
+        username: user.username,
+        id: user._id,
+      })
+      const encryptedSession = sealData(session, {
+        password: process.env.SECRET_COOKIE_PASSWORD})
       // cookies().set("user", user.id, {secure: true} )
-      return new Response(JSON.stringify(user), { status: 200 });
+      return new Response(JSON.stringify(user), { status: 200,
+        headers: { 'Set-cookie': `nextUserSession=${encryptedSession}`}});
     } else {
       return new Response(
         JSON.stringify({ message: "Password does not match" }),
@@ -31,7 +38,7 @@ export const POST = async (req, res) => {
       );
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return new Response(
         JSON.stringify({ error: "Something went wrong!" }),
         { status: 500 }
