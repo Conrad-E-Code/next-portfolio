@@ -3,7 +3,6 @@ import { createContext, useState, useEffect } from "react";
 import Colors from "../constants/colors";
 export const Context = createContext();
 export const ContextProvider = ({ children }) => {
-
   //user
   const [user, setUser] = useState(null);
   //toggle for mobile menu nav
@@ -14,6 +13,9 @@ export const ContextProvider = ({ children }) => {
   const [textIsDark, setTextIsDark] = useState(false);
   //current for video Slider
   const [current, setCurrent] = useState(0);
+
+  // payment state
+  const [paymentStatus, setPaymentStatus] = useState(null);
   return (
     <Context.Provider
       value={{
@@ -28,7 +30,9 @@ export const ContextProvider = ({ children }) => {
         textIsDark,
         setTextIsDark,
         user,
-        setUser
+        setUser,
+        paymentStatus,
+        setPaymentStatus,
       }}
     >
       {children}

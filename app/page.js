@@ -10,6 +10,7 @@ export default function Home() {
 
   return (
 <div className='ease-in-out transistion flex flex-col' >
+<Modal show={isPaymentCompleted} onClose={() => setIsPaymentCompleted(false)}/>
 <Hero bg="custom-img" buttonTarget="projects" message="Software Developer" heading="Conrad Etherington" buttonText="Hello World!" buttonTextAlt="Hello."/>
 <VideoSlider />
 </div>
