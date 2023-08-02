@@ -2,7 +2,7 @@ import { connectToDB } from "/utils/database";
 import User from "/models/user";
 import bcrypt, {hash} from "bcrypt";
 
-export const POST = async (req, res) => {
+export const POST = async (req) => {
     const { username, password } = await req.json();
     try{
         console.log(username, password, "MY TRY")
