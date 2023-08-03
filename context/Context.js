@@ -15,7 +15,7 @@ export const ContextProvider = ({ children }) => {
   const [current, setCurrent] = useState(0);
 
   // payment state
-  const [paymentStatus, setPaymentStatus] = useState(null);
+  const [isPaymentCompleted, setIsPaymentCompleted] = useState(false);
   return (
     <Context.Provider
       value={{
@@ -31,8 +31,8 @@ export const ContextProvider = ({ children }) => {
         setTextIsDark,
         user,
         setUser,
-        paymentStatus,
-        setPaymentStatus,
+        isPaymentCompleted,
+        setIsPaymentCompleted,
       }}
     >
       {children}

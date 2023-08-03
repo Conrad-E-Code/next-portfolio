@@ -7,10 +7,11 @@ import { useContext } from 'react';
 import { Context } from '/context/Context';
 
 const SquareClient = () => {
-    const {paymentStatus, setPaymentStatus} = useContext(Context)
+  const {setIsPaymentCompleted} = useContext(Context)
     const router = useRouter();
   return (
-    <div className='pt-16 flex items-center justify-center'>
+    <div className='pt-[30vh] flex items-center justify-center h-screen bg-fixed bg-center bg-no-repeat handshake bg-cover sm:bg-top md:bg-center lg:bg-contain'>
+      <div className="opacity-70 ">
     <PaymentForm
         applicationId='sandbox-sq0idb-SElf9Yc1IyaxeegBCURt-A'
         cardTokenizeResponseReceived={async (token, verifiedBuyer) => {
@@ -27,11 +28,10 @@ const SquareClient = () => {
             const res = await response.json()
             if (res.payment.status === "COMPLETED") {
               console.log("PAYMENT SUCCESSFUL")
-              setPaymentStatus("COMPLETED")
+              setIsPaymentCompleted(true)
               router.push("/")
             }
             else {
-                setPaymentStatus("FAILED")
               console.log(res, "RES")
               console.log("PAYMENT FAILED")
             }
@@ -39,8 +39,9 @@ const SquareClient = () => {
         locationId='LFX0FJ4TJ3RAS'
         >
                 <CreditCard />
-                {paymentStatus !== "COMPLETED" || null && <div className='text-red-500'>Payment Not Completed</div>}
+                
         </PaymentForm>
+    </div>
 </div>
     
   )
