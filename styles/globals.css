@@ -23,7 +23,7 @@ html {
     background-image: url("../public/small-pipeline.png");
 }
 .navbar-li {
-    @apply p-4 hover:bg-accentColorB/50  rounded font-bold text-xl;
+    @apply p-4 hover:bg-accentColorB/50  rounded font-bold text-xl relative;
 }
 .navbar-li-dark {
     @apply p-4  hover:bg-accentColor/90 rounded font-bold text-xl;

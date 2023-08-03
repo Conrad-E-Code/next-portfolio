@@ -6,6 +6,7 @@ import Modal from '/components/Modal';
 import { useContext } from 'react';
 import { Context } from '/context/Context';
 
+
 export default function Home() {
   const {isPaymentCompleted, setIsPaymentCompleted} = useContext(Context)
   useEffect(()=>{

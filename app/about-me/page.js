@@ -51,7 +51,7 @@ const AboutMe = () => {
       <div
         style={{ color: Colors[textClr] }}
         id="coming-soon"
-        className="h-screen bg-fixed bg-cover small-pipeline flex justify-center flex-col items-center"
+        className="h-screen bg-fixed bg-cover bg-center small-pipeline flex justify-center flex-col items-center"
       >
         <div
           id="flasher"
