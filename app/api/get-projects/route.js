@@ -4,7 +4,7 @@ export const POST = async (req, { params }) => {
         // console.log(params, "MY PARAMS");
         const {id} = await req.json();
 
-       const  myDelete = await fetch(`http://localhost:3001/api/projects/${id}`, {
+       const  myDelete = await fetch(`https://project-microservice-api.vercel.app/api/projects/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -21,4 +21,16 @@ export const POST = async (req, { params }) => {
             status: 500,
         });
     }
+}
+
+export const GET = async (req) => {
+    try {
+        const res = await fetch("https://project-microservice-api.vercel.app/api/projects")
+        const data = await res.json()
+        console.log(data, "MY DATA get-proj");
+        return new Response(JSON.stringify(data), { status: 200 });
+    }
+    catch (error) {
+        console.log(error, "GET ERROR-get-projects")
+}
 }

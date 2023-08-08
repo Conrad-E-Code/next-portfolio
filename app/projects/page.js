@@ -9,7 +9,7 @@ const Projects = () => {
   const projClass = "pt-16 bg-fixed bg-cover custom-img h-screen overflow-y-scroll overflow-x-hidden"
   function getProjects() {
     // console.log("get projects", process.env.GET_PROJECTS_PATH)
-  fetch(`http://localhost:3001/api/projects`)
+  fetch(`http://localhost:3000/api/get-projects`)
   .then( r => r.json())
   .then( data => {
     console.log(data, "MY DATA");
