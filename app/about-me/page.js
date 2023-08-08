@@ -71,7 +71,7 @@ const AboutMe = () => {
           }}
           className={`w-[45vw] bg-amber-400 h-[20vh] ${
             blinkingColor === 'yellow' ? 'bg-opacity-80' : 'bg-opacity-30'
-          } hover:bg-opacity-100 cursor-pointer ease-in-out duration-700 text-center rounded justify-center`}
+          } hover:bg-opacity-100 cursor-pointer ease-in-out duration-700 text-center rounded justify-center mt-10`}
         >
           RENDERING PROJECTS
         </div>

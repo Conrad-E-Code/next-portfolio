@@ -67,7 +67,7 @@ setTextClr("textColorLight")}
       <ul className="hidden sm:flex mx-5 gap-3 ">
         {links.map((link) => {
           return (
-            <div className="relative">
+            <div key={link.name} className="relative">
             <Link href={link.path}><li className={liClass}>{link.name}</li>
             {path === link.path ? <motion.span style={{backgroundColor: Colors[textClr]}} className={`absolute left-0 bottom-2 block h-[3px] w-full`} /> : null}
             </Link>
