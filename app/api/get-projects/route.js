@@ -5,7 +5,7 @@ export const DELETE = async (req, {id}) => {
             method: "DELETE",
         })
         const data = await myDelete.json()
-        console.log(data, "MY DEWLDATA");
+        console.log(data, "MY DEL DATA");
         return new Response(JSON.stringify({"deleted": data}), { status: 200 });
     }
     catch (error) {

@@ -8,13 +8,14 @@ const Projects = () => {
   }, [])
   const projClass = "pt-16 bg-fixed bg-cover custom-img h-screen overflow-y-scroll overflow-x-hidden"
   function getProjects() {
-  fetch("http://localhost:3001/api/projects")
+    // console.log("get projects", process.env.GET_PROJECTS_PATH)
+  fetch(`http://localhost:3001/api/projects`)
   .then( r => r.json())
   .then( data => {
     console.log(data, "MY DATA");
     setProjects(data);
   })
-  .catch( err => console.log(err, "MY ERROR"))
+  .catch( err => console.log(err, "fetch error page.js"))
   }
   return (
     <div className='pt-16 bg-fixed bg-cover custom-img h-screen overflow-y-scroll overflow-x-hidden'>

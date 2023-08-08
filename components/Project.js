@@ -49,7 +49,7 @@ const Project = ({
     });
 
     function handleDelete() {
-      fetch(`http://localhost:3000/api/get-projects/`, {
+      fetch(`http://localhost:3001/${id}`, {
         method: "DELETE",
         body: JSON.stringify({id: id}),
         
