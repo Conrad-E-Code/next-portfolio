@@ -21,8 +21,6 @@ export const POST = async (req) => {
             return new Response(JSON.stringify({ error: "User already exists" }), {
                 status: 409,
             });
-
-
     } catch (error) {
         console.log(error, "MY ERROR")
     }

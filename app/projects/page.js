@@ -1,11 +1,42 @@
 "use client";
-import React from 'react'
-import Project from '../../components/Project'
-
+import {useState, useEffect} from 'react'
+import Project from '/components/Project'
 const Projects = () => {
+  const [projects, setProjects] = useState([])
+  useEffect(() => {
+    getProjects()
+  }, [])
+  const projClass = "pt-16 bg-fixed bg-cover custom-img h-screen overflow-y-scroll overflow-x-hidden"
+  function getProjects() {
+  fetch("http://localhost:3001/api/projects")
+  .then( r => r.json())
+  .then( data => {
+    console.log(data, "MY DATA");
+    setProjects(data);
+  })
+  .catch( err => console.log(err, "MY ERROR"))
+  }
   return (
-    <div className='pt-16 bg-fixed bg-cover custom-img h-screen'>
-        <Project name="React Native App" headline="Click to see details." details="DETAILS" videoUrl="https://www.youtube-nocookie.com/embed/hjBwnxklXGg?autoplay=1&mute=1&loop=1"/>
+    <div className='pt-16 bg-fixed bg-cover custom-img h-screen overflow-y-scroll overflow-x-hidden'>
+      {projects ? projects.map((proj) => {
+      return (
+        <div key={proj._id} className={projClass}>
+          <Project
+            name={proj.name}
+            description={proj.description}
+            points={proj.points}
+            ytId={proj.ytId}
+            tech={proj.tech}
+            github={proj.github}
+            live={proj.live}
+            image={proj.image}
+            id={proj._id}
+          />
+        </div>
+      );
+    }): null}
+    {projects[0] === undefined ? <div className="">Loading...</div> : null}
+      
     </div>
   )
 }

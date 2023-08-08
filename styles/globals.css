@@ -28,3 +28,10 @@ html {
 .navbar-li-dark {
     @apply p-4  hover:bg-accentColor/90 rounded font-bold text-xl;
 }
+.iframe-container {
+    @apply relative w-full my-5 ;
+    padding-bottom: 56.25%;
+}
+.iframe-container iframe {
+    @apply absolute w-full h-full top-0 left-0 rounded-lg;
+}
