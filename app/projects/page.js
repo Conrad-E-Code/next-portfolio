@@ -1,28 +1,38 @@
 "use client";
 import {useState, useEffect} from 'react'
 import Project from '/components/Project'
+import { Context } from "/context/Context";
+import { useContext } from "react";
+
 const Projects = () => {
-  const [projects, setProjects] = useState([])
+  const { projects, setProjects } = useContext(Context);
+
+  const [readyState, setReadyState] = useState("Fetching Projects...")
   useEffect(() => {
     getProjects()
   }, [])
   const projClass = "pt-16 bg-fixed bg-cover custom-img h-screen overflow-y-scroll overflow-x-hidden"
   function getProjects() {
     // console.log("get projects", process.env.GET_PROJECTS_PATH)
-  fetch(`http://localhost:3000/api/get-projects`)
+  fetch(`/api/get-projects`)
   .then( r => r.json())
   .then( data => {
     console.log(data, "MY DATA");
     setProjects(data);
+    setReadyState("ready")
   })
-  .catch( err => console.log(err, "fetch error page.js"))
+  .catch( err => {
+    console.log(err, "fetch error page.js")
+    setReadyState("Couldn't fetch projects")
+  })
   }
   return (
     <div className='pt-16 bg-fixed bg-cover custom-img h-screen overflow-y-scroll overflow-x-hidden'>
-      {projects ? projects.map((proj) => {
+      {projects ? projects.map((proj, pIdx) => {
       return (
         <div key={proj._id} className={projClass}>
           <Project
+            idx={pIdx}
             name={proj.name}
             description={proj.description}
             points={proj.points}
@@ -36,7 +46,7 @@ const Projects = () => {
         </div>
       );
     }): null}
-    {projects[0] === undefined ? <div className="">Loading...</div> : null}
+    {readyState !== "ready" ? <div className="text-textColorLight text-5xl font-semibold ">{readyState}</div> : null}
       
     </div>
   )
