@@ -15,9 +15,10 @@ const Project = ({
   image,
   points,
   ytId,
-  id
+  id,
+  idx,
 }) => {
-  const { textClr } = useContext(Context);
+  const { textClr, projects, setProjects } = useContext(Context);
   const [showDetails, setShowDetails] = useState(false);
 
   function handleShowDetails() {
@@ -30,7 +31,7 @@ const Project = ({
         <div
           key={t}
           style={{ color: Colors[textClr] }}
-          className="text-xl font-semibold"
+          className="text-xl font-semibold transform-gpu hover:scale-110 transition-transform  duration-300"
         >
           <ImageCard name={t} />
         </div>
@@ -38,38 +39,48 @@ const Project = ({
     });
     const pointsList = points.map((p) => {
       return (
-        <div
-          key={p}
-          style={{ color: Colors[textClr] }}
-          className="text-xl font-semibold"
-        >
-          {p}
-        </div>
+        <li>
+          <div
+            key={p}
+            style={{ color: Colors[textClr] }}
+            className="text-xl font-semibold"
+          >
+            {p}
+          </div>
+        </li>
       );
     });
 
     function handleDelete() {
+      function stateHelper() {
+        const newProjects = projects
+          .slice(0, idx)
+          .concat(projects.slice(idx + 1));
+        setProjects(newProjects);
+      }
       fetch(`http://localhost:3000/api/get-projects/`, {
         method: "POST",
-        body: JSON.stringify({id: id}),
-      }
-      )
+        body: JSON.stringify({ id: id }),
+      })
         .then((r) => r.json())
         .then((data) => {
           console.log(data, "MY DATA");
+          stateHelper();
         })
-      .catch((err) => console.log(err, "DELETE ERROR"));
+        .catch((err) => console.log(err, "DELETE ERROR"));
     }
 
     if (showDetails) {
       console.log(techList.length, "MY TECH LIST");
       return (
-        <div
-          className={`grid grid-cols-3 h-full gap-4 justify-center items-center p-10`}
-        >
-          {/* {pointsList} */}
-          {techList}
-          <button onClick={handleDelete}>DELETE</button>
+        <div className="">
+          <ul className="w-4/5 lg:w-2/3 max-sm:w-[95%] mx-auto space-y-4 bg-secondaryColor/40">{pointsList}</ul>
+          <div
+            className={`grid grid-cols-3 h-full gap-4 justify-center items-center p-10`}
+          >
+            {techList}
+            <button onClick={handleDelete}>DELETE</button>
+          </div>
         </div>
       );
     }
@@ -90,7 +101,7 @@ const Project = ({
         Click to see details.
         <div className="w-4/5 lg:w-2/3 max-sm:w-[95%]">
           <MyVideo
-            videoUrl={`https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&mute=1&loop=1&rel=0`}
+            videoUrl={`https://www.youtube-nocookie.com/embed/${ytId}?rel=0`}
           />
         </div>
         {renderDetails()}

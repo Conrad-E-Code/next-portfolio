@@ -10,125 +10,73 @@ import tailwindIcon from "../public/Tailwind_CSS_Logo.svg.png";
 import mongoLogo from "../public/mongo_logo_lime.png";
 import cssLogo from "../public/CSS3_logo.png";
 import Image from "next/image";
+import gitHubIcon from "../public/github-mark-white.png"
+import SpinCounter from "./SpinCounter";
+
 
 function ImageCard({ name }) {
   function renderIcons() {
-    const imgWidth = 75;
-    const imgHeight = 75;
-    const imgClass = "hover:"
+    const imgClass = "h-[75px] w-[75px] hover:rotate-45 transition-transform duration-300 transform-origin-center hover:scale-110"
     switch (name) {
       case "React":
         return (
-          <Image src={reactIcon} alt="react icon" width={75} height={75} />
+          <SpinCounter name={name} spinIdx={0} spinIcon={reactIcon} imgClass={imgClass} />
         );
       case "JavaScript":
         return (
-          <Image
-            src={jsIcon}
-            alt="javascript icon"
-            width={imgWidth}
-            height={imgHeight}
-          />
+<SpinCounter name={name} spinIdx={1} spinIcon={jsIcon} imgClass={imgClass} />
         );
       case "HTML":
         return (
-          <Image
-            src={htmlIcon}
-            alt="html icon"
-            width={imgWidth}
-            height={imgHeight}
-          />
+<SpinCounter name={name} spinIdx={2} spinIcon={htmlIcon} imgClass={imgClass} />
         );
       case "Next.js":
         return (
           <Image
             src={nextIcon}
             alt="next icon"
-            width={imgWidth}
-            height={imgHeight}
+            className={`${imgClass}`}
           />
         );
       case "Tailwind":
         return (
-          <Image
-            src={tailwindIcon}
-            alt="tailwind icon"
-            width={imgWidth}
-            height={imgHeight}
-          />
+          <SpinCounter name={name} spinIdx={3} spinIcon={tailwindIcon} imgClass={imgClass} />
         );
       case "Ruby":
         return (
-          <Image
-            src={rubyIcon}
-            alt="ruby icon"
-            width={imgWidth}
-            height={imgHeight}
-          />
+          <SpinCounter name={name} spinIdx={4} spinIcon={rubyIcon} imgClass={imgClass} />
         );
       case "Rails":
         return (
-          <Image
-            src={railsLogo}
-            alt="rails icon"
-            width={imgWidth}
-            height={imgHeight}
-          />
+          <SpinCounter name={name} spinIdx={5} spinIcon={railsLogo} imgClass={imgClass} />
         );
       case "MongoDB":
         return (
-          <Image
-            src={mongoLogo}
-            alt="mongoDB icon"
-            width={imgWidth}
-            height={imgHeight}
-          />
+          <SpinCounter name={name} spinIdx={6} spinIcon={mongoLogo} imgClass={imgClass} />
         );
       case "CSS":
         return (
-          <Image
-            src={cssLogo}
-            alt="css icon"
-            width={imgWidth}
-            height={imgHeight}
-          />
+          <SpinCounter name={name} spinIdx={7} spinIcon={cssLogo} imgClass={imgClass} />
         );
       case "API":
         return (
-          <Image
-            src={apiIcon}
-            alt="api icon"
-            width={imgWidth}
-            height={imgHeight}
-          />
+          <SpinCounter name={name} spinIdx={8} spinIcon={apiIcon} imgClass={imgClass} />
         );
       case "PostgreSQL":
         return (
-          <Image
-            src={elephant}
-            alt="elephant icon"
-            width={imgWidth}
-            height={imgHeight}
-          />
+          <SpinCounter name={name} spinIdx={9} spinIcon={elephant} imgClass={imgClass} />
         );
       case "React Native":
         return (
-          <Image
-            src={reactIcon}
-            alt="react icon"
-            width={imgWidth}
-            height={imgHeight}
-          />
+          <SpinCounter name={name} spinIdx={10} spinIcon={reactIcon} imgClass={imgClass} />
+        );
+      case "GitHub":
+        return (
+          <SpinCounter name={name} spinIdx={11} spinIcon={gitHubIcon} imgClass={imgClass} />
         );
       default:
         return (
-          <Image
-            className=""
-            src={reactIcon}
-            alt="react icon"
-            width={imgWidth}
-            height={imgHeight}
-          />
+          <SpinCounter name={name} spinIdx={11} spinIcon={Icon} imgClass={imgClass} />
         );
     }
   }
