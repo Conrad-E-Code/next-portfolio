@@ -1,31 +1,77 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import apiIcon from "../public/api-icon.png";
+import elephant from "../public/elephant.png";
+import htmlIcon from "../public/html_icon.png";
+import jsIcon from "../public/Unofficial_JavaScript_logo_2.svg.png";
+import nextIcon from "../public/Nextjs-logo.svg.png";
+import railsLogo from "../public/rails-logo.png";
+import reactIcon from "../public/React-icon.svg.png";
+import rubyIcon from "../public/ruby.png";
+import tailwindIcon from "../public/Tailwind_CSS_Logo.svg.png";
+import mongoLogo from "../public/mongo_logo_lime.png";
+import cssLogo from "../public/CSS3_logo.png";
+import gitHubIcon from "../public/github-mark-white.png"
 
 
 
 
+const SpinCounter = ({spinIdx, name}) => {
+function renderIcon(name){
+  switch (name) {
+    case "React":
+      return (
+        reactIcon
+      );
+    case "JavaScript":
+      return (
+        jsIcon
+      );
+    case "HTML":
+      return (
+        htmlIcon
+      );
+    case "Next.js":
+      return (
+        nextIcon
+      );
+    case "Tailwind":
+      return (
+        tailwindIcon
+      );
+    case "Ruby":
+      return (
+        rubyIcon
+      );
+    case "Rails":
+      return (
+        railsLogo
+      );
+    case "MongoDB":
+      return (
+        mongoLogo
+      );
+    case "CSS":
+      return (
+        cssLogo
+      );
+    case "GitHub":
+      return (
+        gitHubIcon
+      );
+    default:
+      return (
+        apiIcon
+      );
+  }
 
-const SpinCounter = ({spinIcon, imgClass, spinIdx, name}) => {
+}
+
+
     const [spinCount, setSpinCount] = useState(0);
     const [globalSpinCount, setGlobalSpinCount] = useState(0);
-    // useEffect(() => {
-    //     const spinningElement = document.querySelector(`#spin-${spinIdx}`);
-    //     let isSpinning = false;
-    
-    //     const handleTransitionEnd = () => {
-    //       if (isSpinning) {
-    //         setSpinCount(prevCount => prevCount + 1);
-    //       }
-    //       isSpinning = !isSpinning;
-    //     };
-    
-    //     spinningElement.addEventListener('transitionend', handleTransitionEnd);
-    
-    //     return () => {
-    //       spinningElement.removeEventListener('transitionend', handleTransitionEnd);
-    //     };
-    //   }, []);
+    const imgClass = `h-[75px] w-[75px] hover:rotate-45 transition-transform duration-300 transform-origin-center hover:scale-110 ${globalSpinCount > 0 && "hidden"}`
 
     useEffect(() => {
         const spinningElement = document.querySelector(`#spin-${spinIdx}`);
@@ -66,14 +112,14 @@ const SpinCounter = ({spinIcon, imgClass, spinIdx, name}) => {
 
   return (
 <>
-<Image id={`spin-${spinIdx}`} src={spinIcon} alt="spinning icon" className={imgClass} />
-{spinCount > 0 && globalSpinCount < 1 && <div className="text-xl font-semibold">{spinCount}</div>}
-{spinCount >=3 && spinCount <= 5 && globalSpinCount < 1 && <div className="text-xl font-semibold">Keep Spinning!</div>}
-{spinCount > 5 && globalSpinCount < 1 && <div className="text-xl font-semibold">Great Job!</div>}
-{spinCount > 7 && globalSpinCount < 1 && <div className="text-xl font-semibold">Almost There!</div>}
-
-{globalSpinCount > 0 && <div className="text-xl font-semibold">Global Accumulated Spins:{globalSpinCount}</div>}
+<Image id={`spin-${spinIdx}`} src={renderIcon(name)} alt="spinning icon" className={imgClass} />
+{spinCount > 0 && spinCount < 3 && globalSpinCount < 1 && <div className="text-xl font-semibold">Spin Count:{spinCount}</div>}
+{spinCount >=3 && spinCount <= 5 && globalSpinCount < 1 && <div className="text-xl font-semibold">Keep Spinning!{spinCount}</div>}
+{spinCount > 5 && spinCount <= 7 && globalSpinCount < 1 && <div className="text-xl font-semibold">Great Job!{spinCount}</div>}
+{spinCount > 7 && globalSpinCount < 1 && <div className="text-xl font-semibold">Almost There! {spinCount}</div>}
+{globalSpinCount > 0 && <div className="text-xl font-semibold">Global {name} Spins:{globalSpinCount}</div>}
 {globalSpinCount > 0 && <div className="text-xl font-semibold">Thanks for uploading spins!</div>}
+{spinCount === 0 &&<p>{name}</p>}
 
 </>
   )

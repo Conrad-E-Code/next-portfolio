@@ -14,7 +14,7 @@ import gitHubIcon from "../public/github-mark-white.png"
 import SpinCounter from "./SpinCounter";
 
 
-function ImageCard({ name }) {
+function ImageCard({ name, spinIdx}) {
   function renderIcons() {
     const imgClass = "h-[75px] w-[75px] hover:rotate-45 transition-transform duration-300 transform-origin-center hover:scale-110"
     switch (name) {
@@ -80,11 +80,13 @@ function ImageCard({ name }) {
         );
     }
   }
-
+function handleStopPropagate(e){
+  e.stopPropagation()
+}
   return (
-      <div className="flex flex-col bg-secondaryColor/50 h-full w-full p-5 justify-center items-center gap-2 rounded-lg shadow-lg">
-          {renderIcons()}
-          <p>{name}</p>
+      <div onClick={handleStopPropagate} className="flex flex-col bg-secondaryColor/50 h-full w-full p-5 justify-center items-center gap-2 rounded-lg shadow-lg">
+          {/* {renderIcons()} */}
+          <SpinCounter name={name} spinIdx={spinIdx}/>
       </div>
   );
 }

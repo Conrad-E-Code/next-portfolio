@@ -26,14 +26,14 @@ const Project = ({
   }
 
   function renderDetails() {
-    const techList = tech.map((t) => {
+    const techList = tech.map((t, index) => {
       return (
         <div
           key={t}
           style={{ color: Colors[textClr] }}
           className="text-xl font-semibold transform-gpu hover:scale-110 transition-transform  duration-300"
         >
-          <ImageCard name={t} />
+          <ImageCard name={t} spinIdx={index} />
         </div>
       );
     });
