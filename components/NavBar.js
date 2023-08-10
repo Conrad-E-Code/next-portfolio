@@ -10,20 +10,20 @@ import { Context } from '/context/Context'
 import NavBarButtons from './NavBarButtons'
 
 const NavBar = () => {
-    const {nav, setNav, clr, setClr, textClr, setTextClr, setTextIsDark, textIsDark} = useContext(Context)
+    const {nav, setNav, clr, setClr, textClr, setTextClr, setTextIsDark, textIsDark, setUserDecided, userDecided} = useContext(Context)
     const handleNav = () => {
         setNav(!nav)
     }
     useEffect(()=>{
         const changeColor = () => {
             console.log(window.scrollY)
-            if(window.scrollY >= 15){
+            if(window.scrollY >= 15 && !userDecided){
                 setClr("transparent")
                 setTextClr("textColorDark")
                 setTextIsDark(true)
                 return
             }
-            else if (window.scrollY < 15) {
+            else if (window.scrollY < 15 && !userDecided) {
                 setClr("secondaryColor")
                 setTextClr("textColorLight")
                 setTextIsDark(false)
@@ -31,7 +31,8 @@ const NavBar = () => {
             }
         }
         window.addEventListener("scroll", changeColor)
-    },[])
+        return () => window.removeEventListener("scroll", changeColor)
+    },[userDecided])
   return (
     <div style={{color: Colors[textClr]}} className={`bg-${clr} bg-opacity-[0.9] z-20 fixed top-0 left-0 right-0 max-w-[100vw]w-full ease-in duration-300`}>
         <div className={`max-w-[1240px] m-auto flex justify-between items-center`}>

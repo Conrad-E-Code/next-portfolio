@@ -8,6 +8,8 @@ export const ContextProvider = ({ children }) => {
 
   //user
   const [user, setUser] = useState(null);
+  //toggle for user set light/dark
+  const [userDecided, setUserDecided] = useState(false);
   //toggle for mobile menu nav
   const [nav, setNav] = useState(false);
   //color and text color for nav bar, etc.
@@ -38,6 +40,8 @@ export const ContextProvider = ({ children }) => {
         setIsPaymentCompleted,
         projects,
         setProjects,
+        userDecided,
+        setUserDecided,
       }}
     >
       {children}

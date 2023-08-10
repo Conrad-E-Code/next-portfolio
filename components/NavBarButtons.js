@@ -11,7 +11,7 @@ import Colors from "/constants/colors";
 
 const links = [
   {
-    name: "Log in",
+    name: "Login",
     path: "/about-me",
   },
   {
@@ -40,13 +40,16 @@ const NavBarButtons = ({ liClass, light }) => {
 
 
   const router = useRouter();
-  const { textIsDark, setTextIsDark, setTextClr, textClr } = useContext(Context);
+  const { textIsDark, setTextIsDark, setTextClr, textClr, userDecided, setUserDecided } = useContext(Context);
   return (
     <div className={`flex`}>
     {textIsDark ? <WiMoonWaxingCrescent2 onClick={()=>{setTextIsDark(!textIsDark)
-setTextClr("textColorLight")}
+setTextClr("textColorLight")
+setUserDecided(true)}
 } className='cursor-pointer ease-in-out duration-700 rounded hover:bg-textColorLight/80' size={40}/> : <WiDaySunny onClick={()=>{setTextIsDark(!textIsDark)
-    setTextClr("textColorDark")}} className='cursor-pointer ease-in-out duration-700 rounded hover:bg-textColorDark/50' size={40}/>}
+    setTextClr("textColorDark")
+    setUserDecided(true)
+    }} className='cursor-pointer ease-in-out duration-700 rounded hover:bg-textColorDark/50' size={40}/>}
       {light ? (
         <div className="relative"><h1
         onClick={() => router.push("/")}
