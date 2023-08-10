@@ -6,12 +6,11 @@ import { useContext } from "react";
 
 const Projects = () => {
   const { projects, setProjects } = useContext(Context);
-
   const [readyState, setReadyState] = useState("Fetching Projects...")
   useEffect(() => {
     getProjects()
   }, [])
-  const projClass = "pt-16 bg-fixed bg-cover custom-img h-screen overflow-y-scroll overflow-x-hidden"
+  const projClass = "py-3 bg-fixed bg-cover overflow-y-scroll"
   function getProjects() {
     // console.log("get projects", process.env.GET_PROJECTS_PATH)
   fetch(`/api/get-projects`)
@@ -28,7 +27,7 @@ const Projects = () => {
   }
   return (
     <div className='pt-16 bg-fixed bg-cover custom-img h-screen overflow-y-scroll overflow-x-hidden'>
-      {projects ? projects.map((proj, pIdx) => {
+      {projects ? projects.reverse().map((proj, pIdx) => {
       return (
         <div key={proj._id} className={projClass}>
           <Project

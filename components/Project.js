@@ -25,7 +25,7 @@ const Project = ({
     setShowDetails(!showDetails);
   }
 
-  function renderDetails() {
+  function renderDetails(name) {
     const techList = tech.map((t, index) => {
       return (
         <div
@@ -33,7 +33,7 @@ const Project = ({
           style={{ color: Colors[textClr] }}
           className="text-xl font-semibold transform-gpu hover:scale-110 transition-transform  duration-300"
         >
-          <ImageCard name={t} spinIdx={index} />
+          <ImageCard projectName={name} name={t} spinIdx={index} />
         </div>
       );
     });
@@ -58,16 +58,17 @@ const Project = ({
           .concat(projects.slice(idx + 1));
         setProjects(newProjects);
       }
-      fetch(`http://localhost:3000/api/get-projects/`, {
-        method: "POST",
-        body: JSON.stringify({ id: id }),
-      })
-        .then((r) => r.json())
-        .then((data) => {
-          console.log(data, "MY DATA");
-          stateHelper();
-        })
-        .catch((err) => console.log(err, "DELETE ERROR"));
+      stateHelper();                                         //dummy mode enabled, doesn't send fetch request to server removes from DOM
+      // fetch(`http://localhost:3000/api/get-projects/`, {
+      //   method: "POST",
+      //   body: JSON.stringify({ id: id }),
+      // })
+      //   .then((r) => r.json())
+      //   .then((data) => {
+      //     console.log(data, "MY DATA");
+      //     stateHelper();
+      //   })
+      //   .catch((err) => console.log(err, "DELETE ERROR"));
     }
 
     if (showDetails) {
@@ -76,7 +77,7 @@ const Project = ({
         <div className="">
           <ul className="w-4/5 lg:w-2/3 max-sm:w-[95%] mx-auto space-y-4 bg-secondaryColor/40">{pointsList}</ul>
           <div
-            className={`grid grid-cols-3 h-full gap-4 justify-center items-center p-10`}
+            className={`grid grid-cols-2 sm:grid sm:grid-cols-3 h-full gap-4 justify-center items-center p-10`}
           >
             {techList}
             <button onClick={handleDelete}>DELETE</button>
@@ -93,7 +94,7 @@ const Project = ({
     >
       <div
         onClick={handleShowDetails}
-        className="bg-primaryColor/60 w-[85vw] flex flex-col items-center gap-4 pb-10 pt-5 rounded-lg shadow-lg hover:bg-primaryColor/80 transition ease-in-out duration-700"
+        className="bg-primaryColor/60 sm:w-[85vw] w-[95vw] flex flex-col items-center gap-4 pb-10 pt-5 rounded-lg shadow-lg hover:bg-primaryColor/80 transition ease-in-out duration-700"
       >
         <div className="bg-accentColorB flex justify-center w-[45vw] mt-5 rounded text-xl font-semibold">
           {name}
@@ -104,7 +105,7 @@ const Project = ({
             videoUrl={`https://www.youtube-nocookie.com/embed/${ytId}?rel=0`}
           />
         </div>
-        {renderDetails()}
+        {renderDetails(name)}
       </div>
     </div>
   );

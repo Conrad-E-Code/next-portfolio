@@ -11,7 +11,7 @@ import Colors from "/constants/colors";
 
 const links = [
   {
-    name: "About Me",
+    name: "Log in",
     path: "/about-me",
   },
   {
@@ -22,6 +22,10 @@ const links = [
     name: "Resume",
     path: "/resume",
   },
+  {
+    name: "Projects",
+    path: "/projects",
+  }
   
 ]
 
