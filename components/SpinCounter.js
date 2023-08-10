@@ -13,11 +13,12 @@ import tailwindIcon from "../public/Tailwind_CSS_Logo.svg.png";
 import mongoLogo from "../public/mongo_logo_lime.png";
 import cssLogo from "../public/CSS3_logo.png";
 import gitHubIcon from "../public/github-mark-white.png"
+import { set } from 'mongoose';
 
 
 
 
-const SpinCounter = ({spinIdx, name}) => {
+const SpinCounter = ({spinIdx, name, projectName}) => {
 function renderIcon(name){
   switch (name) {
     case "React":
@@ -60,6 +61,10 @@ function renderIcon(name){
       return (
         gitHubIcon
       );
+    case "PostgreSQL":
+      return (
+        elephant
+      );
     default:
       return (
         apiIcon
@@ -74,13 +79,14 @@ function renderIcon(name){
     const imgClass = `h-[75px] w-[75px] hover:rotate-45 transition-transform duration-300 transform-origin-center hover:scale-110 ${globalSpinCount > 0 && "hidden"}`
 
     useEffect(() => {
-        const spinningElement = document.querySelector(`#spin-${spinIdx}`);
+        const spinningElement = document.querySelector(`#${projectName}-spin-${spinIdx}`);
         let isSpinning = false;
     
         const handleTransitionEnd = () => {
           if (isSpinning) {
             setSpinCount(prevCount => prevCount + 1);
             if (spinCount + 2 > 10 && globalSpinCount === 0) {
+              setGlobalSpinCount(1);
               fetch('/api/spins', {
                 method: 'POST',
                 headers: {
@@ -112,15 +118,16 @@ function renderIcon(name){
 
   return (
 <>
-<Image id={`spin-${spinIdx}`} src={renderIcon(name)} alt="spinning icon" className={imgClass} />
+<Image id={`${projectName}-spin-${spinIdx}`} src={renderIcon(name)} alt="spinning icon" className={imgClass} />
 {spinCount > 0 && spinCount < 3 && globalSpinCount < 1 && <div className="text-xl font-semibold">Spin Count:{spinCount}</div>}
 {spinCount >=3 && spinCount <= 5 && globalSpinCount < 1 && <div className="text-xl font-semibold">Keep Spinning!{spinCount}</div>}
 {spinCount > 5 && spinCount <= 7 && globalSpinCount < 1 && <div className="text-xl font-semibold">Great Job!{spinCount}</div>}
 {spinCount > 7 && globalSpinCount < 1 && <div className="text-xl font-semibold">Almost There! {spinCount}</div>}
 {globalSpinCount > 0 && <div className="text-xl font-semibold">Global {name} Spins:{globalSpinCount}</div>}
-{globalSpinCount > 0 && <div className="text-xl font-semibold">Thanks for uploading spins!</div>}
+{globalSpinCount > 0 && <div className="font-semibold hidden sm:block">Sent! Keep exploring!</div>}
 {spinCount === 0 &&<p>{name}</p>}
-
+{globalSpinCount === 1 &&  <div className="text-xl font-semibold">🕵️‍♂️: Delving into the MongoDB vault </div>}
+{globalSpinCount >= 1 && <Image src={renderIcon(name)} alt="spinning icon" className={`h-[75px] w-[75px] animate-spin duration-300 transform-origin-center`} />}
 </>
   )
 }

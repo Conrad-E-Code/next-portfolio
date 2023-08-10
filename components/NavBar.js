@@ -46,13 +46,16 @@ const NavBar = () => {
               h-screen bg-secondaryColor ease-in duration-300`} >
             <ul className='flex flex-col mx-5 gap-3'>
                 <li className=' text-4xl hover:text-textColorDark'>
-                <Link onClick={handleNav} className='cursor-pointer' href='/about-me'> About Me</Link>
+                <Link onClick={handleNav} className='cursor-pointer' href='/about-me'> Login</Link>
                 </li>
                 <li className=' text-4xl hover:text-textColorDark'>
                 <Link onClick={handleNav} className='cursor-pointer' href='/resume'> Resume</Link>
                 </li>
                 <li className={` text-4xl hover:text-${Colors.textColorDark}`}>
                     <Link onClick={handleNav} href="/skills">Skills</Link>
+                </li>
+                <li className={` text-4xl hover:text-${Colors.textColorDark}`}>
+                    <Link onClick={handleNav} href="/projects">Projects</Link>
                 </li>
 
             </ul>

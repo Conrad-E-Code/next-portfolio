@@ -9,8 +9,8 @@ export const NextAuthOptions = {
     CredentialsProvider({
         name: "Credentials",
         credentials: {
-          username: { label: "Username", type: "text", placeholder: "Admin" },
-          password: { label: "Password", type: "password", placeholder: "1234" }
+          username: { label: "Username", type: "text", placeholder: "Admin", value: "Admin" },
+          password: { label: "Password", type: "password", placeholder: "1234", value: "1234" }
         },
         async authorize(credentials) {
           try {
