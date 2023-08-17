@@ -1,5 +1,5 @@
 import React from 'react'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+
 import MapComponent from '../../components/MapComponent';
 
 const containerStyle = {
@@ -14,10 +14,7 @@ const containerStyle = {
 
 const page = () => {
     //render a map for the entire screen.
-    const { isLoaded } = useJsApiLoader({
-        id: 'google-map-script',
-        googleMapsApiKey: "YOUR_API_KEY"
-      })
+
   return (
     <MapComponent />
   )
