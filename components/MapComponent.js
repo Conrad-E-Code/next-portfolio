@@ -1,7 +1,15 @@
 import React from 'react'
 import { GoogleMap, useJsApiLoader, useLoadScript } from '@react-google-maps/api';
 // import { GoogleMap, useLoadScript, MarkerF, Polygon } from '@react-google-maps/api';
-
+const containerStyle = {
+    width: '400px',
+    height: '400px'
+  };
+  
+  const center = {
+    lat: -3.745,
+    lng: -38.523
+  };
 const MapComponent = () => {
     const {isLoaded} = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY 
