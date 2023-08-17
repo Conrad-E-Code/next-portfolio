@@ -73,12 +73,12 @@ const AboutMe = () => {
             blinkingColor === 'yellow' ? 'bg-opacity-80' : 'bg-opacity-30'
           } hover:bg-opacity-100 cursor-pointer ease-in-out duration-700 text-center rounded justify-center mt-10`}
         >
-          RENDERING PROJECTS
+          MAP INTEGRATION
         </div>
         <div
           id="flasher"
           onClick={() => {
-            router.push("/sign-up-form");
+            router.push("/map");
           }}
           className={`text-2xl font-semibold w-[45vw] bg-green-600 h-[20vh] ${
             blinkingColor === 'green' ? 'bg-opacity-80' : 'bg-opacity-30'
