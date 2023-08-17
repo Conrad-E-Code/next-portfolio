@@ -67,7 +67,7 @@ const AboutMe = () => {
         <div
           id="flasher"
           onClick={() => {
-            router.push("/projects");
+            router.push("/map");
           }}
           className={`text-2xl font-semibold w-[45vw] bg-amber-400 h-[20vh] ${
             blinkingColor === 'yellow' ? 'bg-opacity-80' : 'bg-opacity-30'
@@ -78,7 +78,7 @@ const AboutMe = () => {
         <div
           id="flasher"
           onClick={() => {
-            router.push("/map");
+            router.push("/sign-up-form");
           }}
           className={`text-2xl font-semibold w-[45vw] bg-green-600 h-[20vh] ${
             blinkingColor === 'green' ? 'bg-opacity-80' : 'bg-opacity-30'
