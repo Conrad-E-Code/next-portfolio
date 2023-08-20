@@ -11,24 +11,24 @@ const containerStyle = {
     lng: -38.523
   };
 const MapComponent = () => {
-    const {isLoaded} = useLoadScript({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY 
-    })
-    // const { isLoaded } = useJsApiLoader({
-    //     id: 'google-map-script',
-    //     googleMapsApiKey: "YOUR_API_KEY"
-    //   })
-
+    // const {isLoaded} = useLoadScript({
+    //     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY 
+    // })
+    const { isLoaded } = useJsApiLoader({
+        id: 'google-map-script',
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY
+      })
   return (
-    isLoaded? <GoogleMap zoom={10} center={center} mapContainerClassName="map-container" >
-
-    </GoogleMap>: <div>Loading...</div>
+    <SubMap isLoaded={isLoaded}/>
   )
 }
-function SubMap() {
+function SubMap({isLoaded}) {
     return(
-        <>
-        WORKING ON IT!</>
+
+    isLoaded ? 
+    <GoogleMap zoom={10} center={center} mapContainerClassName="w-[500px] h-[500px]" >
+
+</GoogleMap>: <div>Loading...</div>
 
     )
 }
