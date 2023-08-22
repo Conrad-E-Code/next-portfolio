@@ -3,10 +3,17 @@ import {useState, useEffect} from 'react'
 import Project from '/components/Project'
 import { Context } from "/context/Context";
 import { useContext } from "react";
+import SearchBar from '../../components/SearchBar';
 
 const Projects = () => {
   const { projects, setProjects } = useContext(Context);
   const [readyState, setReadyState] = useState("Fetching Projects...")
+  const [search, setSearch] = useState('')
+  function filterProjects() {
+    return projects.filter((project) => {
+      return project.name.toLowerCase().includes(search)
+    })
+  }
   useEffect(() => {
     getProjects()
   }, [])
@@ -27,7 +34,8 @@ const Projects = () => {
   }
   return (
     <div className='pt-16 bg-fixed bg-cover custom-img h-screen overflow-y-scroll overflow-x-hidden'>
-      {projects ? projects.reverse().map((proj, pIdx) => {
+      <SearchBar setSearch={setSearch} />
+      {projects && !search ? projects.reverse().map((proj, pIdx) => {
       return (
         <div key={proj._id} className={projClass}>
           <Project
@@ -45,8 +53,24 @@ const Projects = () => {
         </div>
       );
     }): null}
+    {projects && search ? filterProjects().map((proj, pIdx)=> {      return (
+        <div key={proj._id} className={projClass}>
+          <Project
+            idx={pIdx}
+            name={proj.name}
+            description={proj.description}
+            points={proj.points}
+            ytId={proj.ytId}
+            tech={proj.tech}
+            github={proj.github}
+            live={proj.live}
+            image={proj.image}
+            id={proj._id}
+          />
+        </div>
+      );}) : null}
     {readyState !== "ready" ? <div className="text-textColorLight text-5xl font-semibold ">{readyState}</div> : null}
-      
+    
     </div>
   )
 }
