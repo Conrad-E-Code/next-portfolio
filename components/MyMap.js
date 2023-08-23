@@ -22,6 +22,33 @@ function onEachCountry(feature, layer) {
     const cntryName = feature["properties"]["ADMIN"]
     console.log(cntryName)
     layer.bindPopup(cntryName)
+    layer.on({
+        mouseover: (event) => {
+            // console.log("event:", event.target.feature["properties"])
+            console.log("POINT", event.latlng)
+            console.log("COUNTRY", event.target.feature.geometry)
+            event.target.setStyle({
+                fillColor: "green"
+            })
+        },
+        mouseout: (e) => {
+            setTimeout(()=>{
+                e.target.setStyle({
+                    fillColor: "yellow"
+                })
+            }, 2000)
+            setTimeout(()=>{
+                e.target.setStyle({
+                    fillColor: "orange"
+                })
+            }, 5000)
+            setTimeout(()=>{
+                e.target.setStyle({
+                    fillColor: "red"
+                })
+            }, 7000)
+        }
+    })
 
 }
 
@@ -33,7 +60,10 @@ function onEachCountry(feature, layer) {
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
   /> */}
   <GeoJSON style={countryStyle} data={countries} onEachFeature={onEachCountry}/>
-
+  <TileLayer
+    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  />
 
 </MapContainer>
 </div>
