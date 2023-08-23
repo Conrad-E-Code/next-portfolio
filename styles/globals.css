@@ -21,6 +21,19 @@
   width: 80vw;
   height: 80vh;
 }
+.leaflet-tooltip {
+    background-color: cyan;
+}
+.leaflet-popup-content {
+    color: red;
+    font-weight: 900
+}
+.leaflet-popup-content-wrapper {
+    background-color: lime;
+}
+.leaflet-popup-tip {
+    background-color: lime;
+}
 
 html {
     scroll-behavior: smooth;

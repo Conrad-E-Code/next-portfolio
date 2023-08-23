@@ -22,12 +22,15 @@ function changeCountryColor(event) {
 
 function onEachCountry(feature, layer) {
     const cntryName = feature["properties"]["ADMIN"]
+
+    const isoa3 = feature["properties"]["ISO_A3"]
+
     console.log(cntryName)
     console.log(layer)
     // layer.options.fillOpacity = Math.random()
     layer.options.fillColor = colors[Math.floor(Math.random() * 5)]
     layer.bindPopup(cntryName)
-    layer.bindTooltip(cntryName, {sticky: true, opacity: 0.5
+    layer.bindTooltip(isoa3, { sticky: true, opacity: 0.8
     })
     layer.on({
         click: ()=>{console.log("click")},
