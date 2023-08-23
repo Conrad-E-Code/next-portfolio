@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import Colors from '../constants/colors'
-import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
+import {AiOutlineMenu, AiOutlineClose, AiOutlineSearch} from 'react-icons/ai'
 import {WiDaySunny, WiMoonWaxingCrescent2 } from 'react-icons/wi'
 import { Context } from '/context/Context'
 import NavBarButtons from './NavBarButtons'
@@ -41,6 +41,8 @@ const NavBar = () => {
             <div className='fixed top-1 right-4 sm:hidden z-40 ease-in duration-300'>
                 {!nav ? <AiOutlineMenu onClick={handleNav} size={20}/> : <AiOutlineClose onClick={handleNav} size={20}/>}
             </div>
+            {/* SEARCH BUTTON */}
+            {/* <div className='mr-32 p-4 z-40 sm:hidden'><AiOutlineSearch size={20}/></div> */}
             {/* Mobile Menu */}
 {nav ?             <div className={` text-${textClr} sm:hidden absolute top-0 left-0 right-0
              bottom-0 flex justify-center items-center w-full
