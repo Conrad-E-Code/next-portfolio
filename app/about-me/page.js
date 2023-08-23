@@ -67,7 +67,7 @@ const AboutMe = () => {
         <div
           id="flasher"
           onClick={() => {
-            router.push("/map");
+            router.push("/leaflet");
           }}
           className={`text-2xl font-semibold w-[45vw] bg-amber-400 h-[20vh] ${
             blinkingColor === 'yellow' ? 'bg-opacity-80' : 'bg-opacity-30'
