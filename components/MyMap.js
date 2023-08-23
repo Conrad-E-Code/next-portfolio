@@ -1,21 +1,15 @@
 "use client";
-
-import { useEffect } from 'react'
-
 import React from 'react'
 import countries from "../data/countries.json"
-import { MapContainer, TileLayer, useMap, Marker, Popup, GeoJSON} from 'react-leaflet'
+import { MapContainer, TileLayer, GeoJSON} from 'react-leaflet'
 const MyMap = () => {
-useEffect(()=>{
-    console.log(countries["features"][0])
-},[])
 
-let countryStyle = {
+
+const countryStyle = {
     fillColor: "red",
     fillOpacity: 0.7,
     color: "black",
     weight: 2
-
 }
 
 function onEachCountry(feature, layer) {
@@ -60,11 +54,6 @@ function onEachCountry(feature, layer) {
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
   /> */}
   <GeoJSON style={countryStyle} data={countries} onEachFeature={onEachCountry}/>
-  <TileLayer
-    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  />
-
 </MapContainer>
 </div>
   )

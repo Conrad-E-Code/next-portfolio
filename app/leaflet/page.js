@@ -1,11 +1,11 @@
 "use client";
 import React from 'react'
-import MyMap from '../../components/MyMap'
+import BarrelMap from "../../components/BarrelMap"
 
 const page = () => {
   return (
     <div>
-        <MyMap/>
+        <BarrelMap />
     </div>
   )
 }
