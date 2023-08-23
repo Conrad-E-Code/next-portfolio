@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react'
 import countries from "../data/countries.json"
-import { MapContainer, TileLayer, GeoJSON} from 'react-leaflet'
+import { MapContainer, TileLayer, GeoJSON, Marker, Tooltip} from 'react-leaflet'
 const MyMap = () => {
     const [pickedColor, setPickedColor] = useState("#8a20bc")
     const [pickedBorder, setPickedBorder] = useState("#8a20bc")
@@ -27,7 +27,10 @@ function onEachCountry(feature, layer) {
     // layer.options.fillOpacity = Math.random()
     layer.options.fillColor = colors[Math.floor(Math.random() * 5)]
     layer.bindPopup(cntryName)
+    layer.bindTooltip(cntryName, {sticky: true, opacity: 0.5
+    })
     layer.on({
+        click: ()=>{console.log("click")},
         mouseover: 
             changeCountryColor
         // mouseout: (e) => {
@@ -59,7 +62,12 @@ function onEachCountry(feature, layer) {
     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
   />
-  <GeoJSON style={countryStyle} data={countries} onEachFeature={onEachCountry}/>
+  <Marker position={[51.505, -0.09]}  />
+  <GeoJSON style={countryStyle} data={countries} onEachFeature={onEachCountry}>
+  {/* <Tooltip direction="bottom" offset={[0, 20]} opacity={1} >
+        tooltip
+      </Tooltip> */}
+  </GeoJSON>
 </MapContainer>
 </div>
 <div className='flex'>
