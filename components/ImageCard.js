@@ -1,5 +1,5 @@
 
-import SpinCounter from "./SpinCounter";
+import SpinCounter from "./UI/SpinCounter";
 
 
 function ImageCard({ name, spinIdx, projectName}) {

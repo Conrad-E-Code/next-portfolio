@@ -1,3 +1,6 @@
+:root {
+    --random-color: #000; /* Default color */
+  }
 @keyframes spin {
     0% {
       transform: rotate(0deg);
@@ -29,10 +32,10 @@
     font-weight: 900
 }
 .leaflet-popup-content-wrapper {
-    background-color: lime;
+    background-color: var(--popup-bg-color, lime);
 }
 .leaflet-popup-tip {
-    background-color: lime;
+    background-color: var(--popup-bg-color, lime);
 }
 
 html {

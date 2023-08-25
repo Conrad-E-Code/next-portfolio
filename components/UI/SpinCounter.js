@@ -1,18 +1,18 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import apiIcon from "../public/api-icon.png";
-import elephant from "../public/elephant.png";
-import htmlIcon from "../public/html_icon.png";
-import jsIcon from "../public/Unofficial_JavaScript_logo_2.svg.png";
-import nextIcon from "../public/Nextjs-logo.svg.png";
-import railsLogo from "../public/rails-logo.png";
-import reactIcon from "../public/React-icon.svg.png";
-import rubyIcon from "../public/ruby.png";
-import tailwindIcon from "../public/Tailwind_CSS_Logo.svg.png";
-import mongoLogo from "../public/mongo_logo_lime.png";
-import cssLogo from "../public/CSS3_logo.png";
-import gitHubIcon from "../public/github-mark-white.png"
+import apiIcon from "../../public/api-icon.png";
+import elephant from "../../public/elephant.png";
+import htmlIcon from "../../public/html_icon.png";
+import jsIcon from "../../public/Unofficial_JavaScript_logo_2.svg.png";
+import nextIcon from "../../public/Nextjs-logo.svg.png";
+import railsLogo from "../../public/rails-logo.png";
+import reactIcon from "../../public/React-icon.svg.png";
+import rubyIcon from "../../public/ruby.png";
+import tailwindIcon from "../../public/Tailwind_CSS_Logo.svg.png";
+import mongoLogo from "../../public/mongo_logo_lime.png";
+import cssLogo from "../../public/CSS3_logo.png";
+import gitHubIcon from "../../public/github-mark-white.png"
 import { set } from 'mongoose';
 
 

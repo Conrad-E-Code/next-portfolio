@@ -1,13 +1,13 @@
 "use client";
-import React from 'react'
-import BarrelMap from "../../components/BarrelMap"
+import React from "react";
+import BarrelMap from "../../components/mapping/BarrelMap";
 
 const page = () => {
   return (
     <div>
-        <BarrelMap />
+      <BarrelMap import={"./MyMap"} />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;
