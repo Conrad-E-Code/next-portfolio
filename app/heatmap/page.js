@@ -1,6 +1,5 @@
 "use client";
 import React from 'react'
-import Heatmap from '../../components/mapping/HeatMap'
 import BarrelMap from '../../components/mapping/BarrelMap';
 
 const page = () => {
