@@ -1,92 +1,41 @@
 "use client";
-// import React, { useRef, useEffect, useState } from 'react';
-// import L from 'leaflet';
-// import 'leaflet.heat';
-// const addressPoints = [
-//     [51.5, -0.09, 1],
-
-
-//     // Add more data points here...
-//   ]
-
-// function HeatMap() {
-//     // useEffect(() => {
-//     //   var map = L.map("map").setView([51.5, -0.09,], 12);
-  
-//     //   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-//     //     attribution:
-//     //       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-//     //   }).addTo(map);
-  
-//     //   const points = addressPoints
-//     //     ? addressPoints.map((p) => {
-//     //         return [p[0], p[1]];
-//     //       })
-//     //     : [];
-//     //     const radiusInMiles = 100;
-
-//     //     const latLng1 = L.latLng(51.5, -0.09);
-//     //     const latLng2 = L.latLng(51.5 + (1 / 69) * radiusInMiles, -0.09); // 1 degree of latitude is approximately 69 miles
-    
-//     //     const radiusInPixels = map.latLngToLayerPoint(latLng2).y - map.latLngToLayerPoint(latLng1).y;
-//     //     const abs = Math.abs(radiusInPixels)
-//     //   L.heatLayer(points,{
-//     //     minOpacity: 0.5,
-//     //     max: 50,
-//     //     radius: abs,
-//     //     blur: 1,
-//     //     gradient: {0.4: 'blue', 0.65: 'lime', 1: 'red'}
-
-        
-
-//     // }).addTo(map);
-//     // }, []);
-//     const [radiusInMiles, setRadiusInMiles] = useState(5); // Initial radius value
-//     const [zoomLevel, setZoomLevel] = useState(12);
-//     useEffect(() => {
-//         var map = L.map("map").setView([51.5, -0.09], zoomLevel);
-    
-//         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-//           attribution:
-//             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-//         }).addTo(map);
-    
-//         const points = addressPoints
-//           ? addressPoints.map((p) => [p[0], p[1]])
-//           : [];
-    
-//         const latLng1 = L.latLng(51.5, -0.09);
-//         const latLng2 = L.latLng(51.5 + (1 / 69) * radiusInMiles, -0.09); // 1 degree of latitude is approximately 69 miles
-    
-//         const radiusInPixels = map.latLngToLayerPoint(latLng2).y - map.latLngToLayerPoint(latLng1).y;
-    
-//         L.heatLayer(points, {
-//           minOpacity: 0.5,
-//           max: 50,
-//           radius: Math.abs(radiusInPixels),
-//           blur: 1,
-//           gradient: {0.4: 'blue', 0.65: 'lime', 1: 'red'}
-//         }).addTo(map);
-    
-//         map.on('zoomend', () => {
-//           setZoomLevel(map.getZoom());
-//         });
-//       }, [radiusInMiles, zoomLevel]);
-//     return <div id="map" style={{ height: "100vh" }}></div>;
-//   }
-// export default HeatMap
-
 import React, { useEffect, useState, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet.heat';
-
+import ukFreeWifi from "../../data/WiFi locations April 2020.json"
 const addressPoints = [
-  [51.5, -0.09, 1],
+//   [51.5, -0.09, 1],
   // Add more data points here...
 ];
+parseGeoJSONToHeatmapData(ukFreeWifi)
+function parseGeoJSONToHeatmapData(geojsonData) {
+      
+    if (geojsonData && geojsonData.features) {
+      geojsonData.features.forEach((feature) => {
+        if (feature.geometry && feature.geometry.type === "Point" && feature.geometry.coordinates) {
+          const [lng, lat] = feature.geometry.coordinates;
+          addressPoints.push([lat, lng, 1]); // Assign intensity of 1
+        }
+      });
+    }
+  
+  }
 
 function HeatMap() {
-  const [radiusInMiles, setRadiusInMiles] = useState(500);
+    function parseGeoJSONToHeatmapData(geojsonData) {
+      
+        if (geojsonData && geojsonData.features) {
+          geojsonData.features.forEach((feature) => {
+            if (feature.geometry && feature.geometry.type === "Point" && feature.geometry.coordinates) {
+              const [lng, lat] = feature.geometry.coordinates;
+              addressPoints.push([lat, lng, 1]); // Assign intensity of 1
+            }
+          });
+        }
+      
+        return heatmapData;
+      }
+  const [radiusInMiles, setRadiusInMiles] = useState(1);
   const [zoomLevel, setZoomLevel] = useState(12);
   const [heatLayer, setHeatLayer] = useState(null);
   const mapRef = useRef(null);
@@ -128,7 +77,7 @@ function HeatMap() {
 
     setHeatLayer(newHeatLayer);
     newHeatLayer.addTo(mapRef.current);
-  }, [radiusInMiles, zoomLevel, heatLayer]);
+  }, [radiusInMiles, zoomLevel]);
 
 //   useEffect(() => {
 //     if (!mapRef.current) {
