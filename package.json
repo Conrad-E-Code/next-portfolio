@@ -18,6 +18,8 @@
     "iron-session": "^6.3.1",
     "js-cookie": "^3.0.5",
     "leaflet": "^1.9.4",
+    "leaflet-heatmap": "^1.0.0",
+    "leaflet.heat": "^0.2.0",
     "mongodb": "^5.7.0",
     "mongoose": "^7.4.1",
     "next": "13.4.10",

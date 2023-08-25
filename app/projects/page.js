@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react'
 import Project from '/components/Project'
 import { Context } from "/context/Context";
 import { useContext } from "react";
-import SearchBar from '../../components/SearchBar';
+import SearchBar from '../../components/UI/SearchBar';
 
 const Projects = () => {
   const { projects, setProjects } = useContext(Context);
