@@ -5,7 +5,7 @@ import BarrelMap from "../../components/mapping/BarrelMap";
 const page = () => {
   return (
     <div>
-      <BarrelMap />
+      <BarrelMap import={"./MyMap"} />
     </div>
   );
 };

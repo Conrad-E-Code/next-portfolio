@@ -1,6 +1,7 @@
 "use client";
 import React from 'react'
 import Heatmap from '../../components/mapping/HeatMap'
+import BarrelMap from '../../components/mapping/BarrelMap';
 
 const page = () => {
     const heatmapData = [
@@ -11,7 +12,7 @@ const page = () => {
   return (
     <div>page
 
-    <Heatmap heatmapData={heatmapData} />
+    <BarrelMap import="./HeatMap" />
         
     </div>
   )

@@ -7,7 +7,7 @@ const BarrelMap = (props) => {
   useEffect(() => {
     (async () => {
       if (typeof global.window !== "undefined") {
-        const newClient = (await import("./MyMap")).default;
+        const newClient = (await import(`${props.import}`)).default;
         setClient(() => newClient);
       }
     })();

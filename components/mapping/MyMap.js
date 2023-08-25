@@ -150,20 +150,20 @@ const MyMap = () => {
           scrollWheelZoom={false}
           ref={mapRef}
         >
-          {/* <TileLayer
+          <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          /> */}
+          />
           <Marker position={[51.505, -0.09]} />
-          {/* <GeoJSON
+          <GeoJSON
             style={countryStyle}
             data={countries}
             onEachFeature={onEachCountry}
-          > */}
+          >
             {/* <Tooltip direction="bottom" offset={[0, 20]} opacity={1} >
         tooltip
       </Tooltip> */}
-          {/* </GeoJSON> */}
+          </GeoJSON>
           {/* <HeatmapLayer
         points={heatmapData}
         latitudeExtractor={(point) => point[0]}
