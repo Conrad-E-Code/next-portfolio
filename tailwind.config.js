@@ -18,6 +18,8 @@ module.exports = {
          warningColor: "#FFC107",
          accentColor: "#FF6B6B",
          accentColorB: "#17C3B2",
+         chatHeaderColor: "rgb(52,53,65)",
+         chatBackgroundColor: "rgb(68,70,84)"
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
