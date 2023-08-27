@@ -18,6 +18,8 @@
 
 @import url("~leaflet/dist/leaflet.css");
 
+@import './prism-custom.css';
+
 .leaflet-container {
     margin: auto;
     margin-top: 5rem;

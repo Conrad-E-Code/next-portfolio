@@ -31,6 +31,7 @@ const links = [
 
 const NavBarButtons = ({ liClass, light }) => {
   const path = usePathname();
+  console.log(path)
 
   //state and handler for dropdown menu
   const [dropDown, setDropDown] = useState(false);
@@ -43,35 +44,18 @@ const NavBarButtons = ({ liClass, light }) => {
   const { textIsDark, setTextIsDark, setTextClr, textClr, userDecided, setUserDecided } = useContext(Context);
   return (
     <div className={`flex`}>
-    {textIsDark ? <WiMoonWaxingCrescent2 onClick={()=>{setTextIsDark(!textIsDark)
+      {path !== "/blog" ? <>
+      {textIsDark ? <WiMoonWaxingCrescent2 onClick={()=>{setTextIsDark(!textIsDark)
 setTextClr("textColorLight")
 setUserDecided(true)}
 } className='cursor-pointer ease-in-out duration-700 rounded hover:bg-textColorLight/80' size={40}/> : <WiDaySunny onClick={()=>{setTextIsDark(!textIsDark)
     setTextClr("textColorDark")
     setUserDecided(true)
     }} className='cursor-pointer ease-in-out duration-700 rounded hover:bg-textColorDark/50' size={40}/>}
-      {light ? (
-        <div className="relative"><h1
-        onClick={() => router.push("/")}
-        className={`hover:bg-accentColorB/80 cursor-pointer font-bold py-4 my-0 ml-10`}
-      >
-        Conrad Etherington
-      </h1>
-      {path === "/" ? <motion.span style={{backgroundColor: Colors[textClr]}} className={`absolute left-10 bottom-2 right-10 block h-[3px] w-[79%]`} /> : null}
-      </div>
-      ) : (
-        <div className="relative"><h1
-          onClick={() => router.push("/")}
-          className={`hover:bg-accentColor/80 cursor-pointer font-bold py-4 my-0 ml-10`}
-        >
-          Conrad Etherington
-        </h1>
-        {path === "/" ? <motion.span style={{backgroundColor: Colors[textClr]}} className={`absolute left-10 bottom-2 right-10 block h-[3px] w-[79%]`} /> : null}
-        </div>
-        
-      )}
-     
-      <ul className="hidden sm:flex mx-5 gap-3 ">
+
+    
+
+<ul className="hidden sm:flex mx-5 gap-3 ">
         {links.map((link) => {
           return (
             <div key={link.name} className="relative">
@@ -82,6 +66,35 @@ setUserDecided(true)}
             )
         })}
       </ul>
+      </> : null}
+
+
+      {
+      light && path !== "/blog" ? (
+        <div className="relative"><h1
+        onClick={() => router.push("/")}
+        className={`hover:bg-accentColorB/80 cursor-pointer font-bold py-4 my-0 ml-10`}
+      >
+        Conrad Etherington
+      </h1>
+      {path === "/" ? <motion.span style={{backgroundColor: Colors[textClr]}} className={`absolute left-10 bottom-2 right-10 block h-[3px] w-[79%]`} /> : null}
+      </div>
+      ) : path !== "/blog" ? (
+        <div className="relative"><h1
+          onClick={() => router.push("/")}
+          className={`hover:bg-accentColor/80 cursor-pointer font-bold py-4 my-0 ml-10`}
+        >
+          Conrad Etherington
+        </h1>
+        {path === "/" ? <motion.span style={{backgroundColor: Colors[textClr]}} className={`absolute left-10 bottom-2 right-10 block h-[3px] w-[79%]`} /> : null}
+        </div>
+        
+      ): 
+      //Blog ELement Custom Style Element
+        null
+       }
+     
+
     </div>
   );
 };

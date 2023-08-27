@@ -22,21 +22,9 @@ function parseGeoJSONToHeatmapData(geojsonData) {
   }
 
 function HeatMap() {
-    function parseGeoJSONToHeatmapData(geojsonData) {
-      
-        if (geojsonData && geojsonData.features) {
-          geojsonData.features.forEach((feature) => {
-            if (feature.geometry && feature.geometry.type === "Point" && feature.geometry.coordinates) {
-              const [lng, lat] = feature.geometry.coordinates;
-              addressPoints.push([lat, lng, 1]); // Assign intensity of 1
-            }
-          });
-        }
-      
-        return heatmapData;
-      }
-  const [radiusInMiles, setRadiusInMiles] = useState(1);
-  const [zoomLevel, setZoomLevel] = useState(12);
+
+  const [radiusInMiles, setRadiusInMiles] = useState(0.2);
+  const [zoomLevel, setZoomLevel] = useState(8);
   const [heatLayer, setHeatLayer] = useState(null);
   const mapRef = useRef(null);
 
