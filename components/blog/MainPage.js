@@ -1,8 +1,10 @@
 import React from 'react'
+import BlogMap from "./BlogMap"
 
 const MainPage = () => {
   return (
-    <div className="relative flex h-full max-w-full flex-1 overflow-hidden bg-gray-800">
+    // 
+    <div id="main-page" className="relative flex h-full max-w-full flex-1 overflow-hidden bg-gray-800">
     <div className="flex h-full max-w-full flex-1 flex-col" >
         <main className="relative h-full w-full transition-width overflow-auto flex-1">
             <div className="flex h-full">
@@ -16,6 +18,7 @@ const MainPage = () => {
                                     ConRAD
                                 </h1>
                             </div>
+                            <BlogMap />
 
 
                         </div>
