@@ -3,7 +3,7 @@ import BlogList from "./BlogList"
 
 const SideBar = () => {
   return (
-    <div className="h-full w-[260px]">
+    <div className="h-full w-[260px] hidden sm:block">
     <div className="h-full min-h-0 flex-col">
       <div className="relative h-full w-full flex-1 items-start border-white/20">
         <nav className="flex h-full w-full flex-col p-2">
