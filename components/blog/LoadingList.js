@@ -18,7 +18,7 @@ const LoadingList = ({ items, waitTimer }) => {
   }, []);
 
   return (
-    <div className="loading-list" id={`t`}>
+    <div className="loading-list">
       {items.slice(0, loadedItems).map((item, index) => (
         <div key={index} className="loading-list-item">
       {item}

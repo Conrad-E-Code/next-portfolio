@@ -5,7 +5,7 @@ import TypingEffect from './TypingEffect';
 import LiveCode from './LiveCode';
 import LoadingList from './LoadingList';
 
-const BlogPost = ({userInput}) => {
+const BlogPost = ({userInput, blogId, title}) => {
   function processUserInput(input) {
     // Regular expression to match code blocks enclosed in triple backticks
     const codeBlockRegex = /```([\s\S]*?)```/g;
@@ -66,7 +66,8 @@ const BlogPost = ({userInput}) => {
   }
 
   return (
-    <div>
+    <div id={blogId}>
+      <h1>{title}</h1>
       {userInput? <LoadingList items={processUserInput(userInput)} waitTimer={2000} />: null}
     </div>
   )
