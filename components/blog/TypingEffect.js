@@ -1,9 +1,10 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 
+
 function TypingEffect({ text, typingSpeed }) {
   const [displayedText, setDisplayedText] = useState('');
-  const chatContainerRef = useRef(null);
+  const [effectFinished, setEffectFinished]= useState("typing")
 
   useEffect(() => {
     let currentIndex = 0;
@@ -15,6 +16,8 @@ function TypingEffect({ text, typingSpeed }) {
         currentIndex++;
       } else {
         clearInterval(typingInterval);
+        setEffectFinished("written")
+        
       }
     }, typingSpeed);
 
@@ -23,18 +26,10 @@ function TypingEffect({ text, typingSpeed }) {
     };
   }, [text, typingSpeed]);
 
-  // useEffect(() => {
-  //   if (chatContainerRef.current) {
-  //     chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
-  //   }
-  // }, [displayedText]);
-
-  // ADD STATE HERE TO PARENT CONTAINER AND TRY TO GET THIS REF UP A LEVEL TO SEE IF IT WORKS BETTER
-
   return (
     <div
-      className='text-left overflow-y-auto min-h-18 max-h-full p-4'
-      ref={chatContainerRef}
+      className={`text-left overflow-y-auto min-h-18 max-h-full p-4 ${effectFinished}`}
+      id="chat-post"
     >
       {displayedText}
     </div>

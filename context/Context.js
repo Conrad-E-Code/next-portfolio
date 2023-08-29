@@ -1,8 +1,12 @@
 "use client";
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useRef } from "react";
 import Colors from "../constants/colors";
 export const Context = createContext();
 export const ContextProvider = ({ children }) => {
+//Blog site ref for last word focus
+
+const lastWordRef = useRef(null);
+
 // projects
   const [projects, setProjects] = useState([]);
 
@@ -42,6 +46,7 @@ export const ContextProvider = ({ children }) => {
         setProjects,
         userDecided,
         setUserDecided,
+        lastWordRef
       }}
     >
       {children}

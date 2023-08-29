@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import {usePathname} from "next/navigation"
 import Prism from 'prismjs';
-import 'prismjs/themes/prism-okaidia.css'; // Import Prism.js CSS
+import 'prismjs/themes/prism-tomorrow.css'; // Import Prism.js CSS
 import 'prismjs/components/prism-javascript'; // Import Prism.js language support
 
 function CodeBlock({ code }) {
