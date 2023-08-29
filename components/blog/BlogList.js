@@ -1,4 +1,5 @@
 import React from 'react'
+import BlogListItem from "./BlogListItem"
 
 const BlogList = () => {
   return (
@@ -21,7 +22,9 @@ const BlogList = () => {
             </h3>
           </div>
           {/* BEGIN LIST OF BLOGS HERE */}
-          <ol>{/* Map Today BLogs Here */}</ol>
+          <ol>{/* Map Today BLogs Here */}
+          <BlogListItem title={"Howdy"} blogId={"t"} />
+          </ol>
         </div>
       </span>
     </div>
