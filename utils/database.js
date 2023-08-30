@@ -4,6 +4,8 @@ let isConnected = false;
 
 let isConnectedSpins = false;
 
+let isConnectedBlogs = false;
+
 export const connectToDB = async () => {
     mongoose.set("strictQuery", true);
     if (isConnected) {
@@ -43,4 +45,26 @@ export const connectToDBSpins = async () => {
     catch (error) {
         console.log(error);
     }
+}
+
+export const connectToDBBlogs = async () => {
+    mongoose.set("strictQuery", true);
+    if (isConnected) {
+        console.log("MongoDB BLOG DATABASE is already connected");
+        return;
+    }
+    try {
+        await mongoose.connect(process.env.MONGODB_SPIN_URI, {
+            dbName: "blogs",
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+
+        isConnectedBlogs = true;
+        console.log("MongoDB BLOG DATABASE connected");
+    }
+    catch (error) {
+        console.log(error);
+    }
+
 }
