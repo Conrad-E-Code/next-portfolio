@@ -18,7 +18,7 @@ const BlogMap = () => {
       {serverBlogs && serverBlogs.length > 0 ? (
         <LoadingList
           items={serverBlogs.map((blog) => {
-            return <BlogPost title={blog.title} blogId={blog.id} userInput={blog.contentAsString} />;
+            return <BlogPost title={blog.title} blogId={blog.id} userInput={blog.content} />;
           })}
         />
       ) : (
