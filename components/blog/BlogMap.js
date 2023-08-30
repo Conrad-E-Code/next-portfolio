@@ -19,7 +19,7 @@ const BlogMap = () => {
         <LoadingList
           waitTimer={7000}
           items={serverBlogs.map((blog) => {
-            return <BlogPost title={blog.title} blogId={blog.id} userInput={blog.content} />;
+            return <BlogPost title={blog.title} blogId={blog._id} userInput={blog.content} />;
           })}
         />
       ) : (

@@ -18,9 +18,7 @@ const page = () => {
     .catch(err => console.log(err))
   }, [])
   return (
-    <div className="flex h-full w-full flex-col">
-
-    </div>
+<></>
   );
 };
 

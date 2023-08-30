@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 const BlogListItem = ({title, blogId}) => {
     const router = useRouter()
   return (
-    <li onClick={()=>{router.push(`#${blogId}`)}} className={"relative"} style={{
+    <li onClick={()=>{router.push(`/blog/${blogId}`)}} className={"relative"} style={{
         opacity: 1,
         height: "auto",
 

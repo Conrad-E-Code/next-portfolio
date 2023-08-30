@@ -8,8 +8,10 @@ import {AiOutlineMenu, AiOutlineClose, AiOutlineSearch} from 'react-icons/ai'
 import {WiDaySunny, WiMoonWaxingCrescent2 } from 'react-icons/wi'
 import { Context } from '/context/Context'
 import NavBarButtons from './NavBarButtons'
+import { usePathname } from "next/navigation";
 
 const NavBar = () => {
+    const path = usePathname()
     const {nav, setNav, clr, setClr, textClr, setTextClr, setTextIsDark, textIsDark, setUserDecided, userDecided} = useContext(Context)
     const handleNav = () => {
         setNav(!nav)
@@ -33,7 +35,7 @@ const NavBar = () => {
         window.addEventListener("scroll", changeColor)
         return () => window.removeEventListener("scroll", changeColor)
     },[userDecided])
-  return (
+  if (path !== "/blog/test") { return (
     <div style={{color: Colors[textClr]}} className={`bg-${clr} bg-opacity-[0.9] z-20 fixed top-0 left-0 right-0 max-w-[100vw]w-full ease-in duration-300`}>
         <div className={`max-w-[1240px] m-auto flex justify-between items-center`}>
 {textIsDark ? <NavBarButtons light={false} liClass='navbar-li-dark' /> : <NavBarButtons light={true} liClass='navbar-li' />}
@@ -67,7 +69,7 @@ const NavBar = () => {
             
         </div>
     </div>
-  )
+  )}
 }
 
 export default NavBar

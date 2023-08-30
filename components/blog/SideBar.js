@@ -1,7 +1,11 @@
+"use client";
+
 import React from 'react'
 import BlogList from "./BlogList"
 
 const SideBar = () => {
+
+
   return (
     <div className="h-full w-[260px] hidden sm:block">
     <div className="h-full min-h-0 flex-col">
@@ -67,6 +71,7 @@ const SideBar = () => {
     </div>
   </div>
   )
+
 }
 
 export default SideBar
