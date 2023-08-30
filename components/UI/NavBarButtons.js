@@ -31,7 +31,6 @@ const links = [
 
 const NavBarButtons = ({ liClass, light }) => {
   const path = usePathname();
-  console.log(path)
 
   //state and handler for dropdown menu
   const [dropDown, setDropDown] = useState(false);
@@ -44,7 +43,7 @@ const NavBarButtons = ({ liClass, light }) => {
   const { textIsDark, setTextIsDark, setTextClr, textClr, userDecided, setUserDecided } = useContext(Context);
   return (
     <div className={`flex`}>
-      {path !== "/blog" ? <>
+      {path.split("/blog").length < 2 ? <>
       {textIsDark ? <WiMoonWaxingCrescent2 onClick={()=>{setTextIsDark(!textIsDark)
 setTextClr("textColorLight")
 setUserDecided(true)}
@@ -70,7 +69,7 @@ setUserDecided(true)}
 
 
       {
-      light && path !== "/blog" ? (
+      light && path.split("/blog").length < 2 ? (
         <div className="relative"><h1
         onClick={() => router.push("/")}
         className={`hover:bg-accentColorB/80 cursor-pointer font-bold py-4 my-0 ml-10`}
@@ -79,7 +78,7 @@ setUserDecided(true)}
       </h1>
       {path === "/" ? <motion.span style={{backgroundColor: Colors[textClr]}} className={`absolute left-10 bottom-2 right-10 block h-[3px] w-[79%]`} /> : null}
       </div>
-      ) : path !== "/blog" ? (
+      ) : path.split("/blog").length < 2 ? (
         <div className="relative"><h1
           onClick={() => router.push("/")}
           className={`hover:bg-accentColor/80 cursor-pointer font-bold py-4 my-0 ml-10`}
