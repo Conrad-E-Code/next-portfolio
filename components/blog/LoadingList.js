@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import './LoadingList.css'; // Import your CSS file
 import TypingEffect from './TypingEffect';
 
-const LoadingList = ({ items, waitTimer }) => {
+const LoadingList = ({ items, waitTimer, instant }) => {
   const [loadedItems, setLoadedItems] = useState(0);
 
   useEffect(() => {
-    setLoadedItems(prevLoadedItems => prevLoadedItems + 1)
+    if (instant) {setLoadedItems(prevLoadedItems => prevLoadedItems + 1)}
     const interval = setInterval(() => {
       setLoadedItems(prevLoadedItems => prevLoadedItems + 1);
     }, waitTimer); // Adjust the delay as needed

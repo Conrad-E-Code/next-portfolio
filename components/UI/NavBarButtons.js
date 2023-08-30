@@ -31,7 +31,6 @@ const links = [
 
 const NavBarButtons = ({ liClass, light }) => {
   const path = usePathname();
-  console.log(path)
 
   //state and handler for dropdown menu
   const [dropDown, setDropDown] = useState(false);

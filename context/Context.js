@@ -4,6 +4,9 @@ import Colors from "../constants/colors";
 export const Context = createContext();
 export const ContextProvider = ({ children }) => {
 
+  // NAvBAr show hide
+  const [hideBar, setHideBar] = useState(false)
+
   //Blogs from server
 const [serverBlogs, setServerBlogs] = useState([])
 
@@ -47,7 +50,9 @@ const [serverBlogs, setServerBlogs] = useState([])
         userDecided,
         setUserDecided,
         serverBlogs,
-        setServerBlogs
+        setServerBlogs,
+        hideBar,
+        setHideBar
       }}
     >
       {children}

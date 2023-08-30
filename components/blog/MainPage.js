@@ -1,10 +1,16 @@
-import React from 'react'
+"use client";
+import React, {useContext} from 'react'
 import BlogMap from "./BlogMap"
+import {Context} from "/context/Context"
+import HideButton from './HideButton';
+
 
 const MainPage = () => {
+    const {hideBar} = useContext(Context)
   return (
     // 
     <div id="main-page" className="relative flex h-full max-w-full flex-1 overflow-hidden bg-gray-800">
+        {hideBar ? <HideButton /> : null}
     <div className="flex h-full max-w-full flex-1 flex-col" >
         <main className="relative h-full w-full transition-width overflow-auto flex-1">
             <div className="flex h-full">

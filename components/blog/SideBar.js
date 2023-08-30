@@ -1,16 +1,17 @@
 "use client";
-
-import React from 'react'
+import React, {useContext, useState} from 'react'
 import BlogList from "./BlogList"
+import HideButton from './HideButton';
+import {Context} from "/context/Context"
 
 const SideBar = () => {
+  const {hideBar} = useContext(Context)
 
-
-  return (
-    <div className="h-full w-[260px] hidden sm:block">
+  if (!hideBar) {return (
+   <div className={"h-full w-[260px] hidden sm:block" }>
     <div className="h-full min-h-0 flex-col">
       <div className="relative h-full w-full flex-1 items-start border-white/20">
-        <nav className="flex h-full w-full flex-col p-2">
+      <nav className="flex h-[100vh] w-full flex-col p-2">
           <div className="mb-1 flex flex-row gap-2">
             <a className="flex px-3 min-h-[44px] py-1 items-center gap-3 transition-colors duration-200 text-white cursor-pointer text-sm rounded-md border border-white/20 hover:bg-gray-500/10 h-11 flex-grow overflow-hidden">
               <svg
@@ -35,42 +36,17 @@ const SideBar = () => {
                 New Blog
               </span>
             </a>
-            <a className="flex px-3 min-h-[44px] py-1 gap-3 transition-colors duration-200 text-white cursor-pointer text-sm rounded-md border border-white/20 hover:bg-gray-500/10 h-11 w-11 flex-shrink-0 items-center justify-center">
-              <svg
-                stroke="currentColor"
-                fill="none"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-4 w-4"
-                height="1em"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  x="3"
-                  y="3"
-                  width="18"
-                  height="18"
-                  rx="2"
-                  ry="2"
-                ></rect>
-                <line x1="9" y1="3" x2="9" y2="21"></line>
-              </svg>
-
-              {/* Add onHOver popup to control tooltip */}
-            </a>
+<HideButton />
           </div>
           {/* SKIPPED A COUPLE hidden divs for no chat history options */}
-          <div className="flex-col flex-1 transition-opacity duration-500 overflow-y-auto">
+ <div className="flex-col flex-1 transition-opacity duration-500 overflow-y-auto">
 <BlogList />
           </div>
-        </nav>
+        </nav> 
       </div>
     </div>
   </div>
-  )
+  )}
 
 }
 

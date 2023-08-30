@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <ContextProvider>
-      <body className={inter.className}>
+      <body style={{backgroundColor: "#1f2937"}} className={inter.className}>
         <LayoutWrapper />
         <NavBar/>
         {children}
