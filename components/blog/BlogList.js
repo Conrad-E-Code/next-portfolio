@@ -1,7 +1,10 @@
 import React from 'react'
 import BlogListItem from "./BlogListItem"
+import {Context} from "/context/Context"
+import { useContext } from 'react'
 
 const BlogList = () => {
+  const {serverBlogs} = useContext(Context)
   return (
     <div className="flex flex-col gap-2 pb-2 text-gray-100 text-sm">
     <div>
@@ -23,7 +26,11 @@ const BlogList = () => {
           </div>
           {/* BEGIN LIST OF BLOGS HERE */}
           <ol>{/* Map Today BLogs Here */}
-          <BlogListItem title={"Howdy"} blogId={"t"} />
+          {serverBlogs && serverBlogs.length > 0 ? serverBlogs.map((blog) => {
+            return(
+              <BlogListItem title={blog.title} blogId={blog._id} />
+            )
+          }) : <li>Loading Previous Blogs</li>}
           </ol>
         </div>
       </span>
