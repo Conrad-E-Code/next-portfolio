@@ -66,8 +66,8 @@ const BlogPost = ({userInput, blogId, title}) => {
   }
 
   return (
-    <div id={blogId}>
-      <h1>{title}</h1>
+    <div id={blogId} className=' bg-gray-50/20 px-20 my-2'>
+      <h1 className={`font-semibold underline`}>{title}</h1>
       {userInput? <LoadingList items={processUserInput(userInput)} waitTimer={2000} />: null}
     </div>
   )
