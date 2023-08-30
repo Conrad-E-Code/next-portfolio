@@ -14,7 +14,8 @@ const page = () => {
     .then(
         r => r.ok ? r.json() : console.log(r))
     .catch(err => console.log(err))
-    .then(data => setServerBlogs(data))
+    .then(data => {setServerBlogs(data)
+      console.log(data)})
     .catch(err => console.log(err))
   }, [])
   return (
