@@ -1,11 +1,26 @@
+"use client";
 import React from 'react'
 import CodeBlock from '../CodeBlock'
 import ChatPost from './ChatPost'
 import TypingEffect from './TypingEffect';
 import LiveCode from './LiveCode';
 import LoadingList from './LoadingList';
-
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 const BlogPost = ({userInput, blogId, title}) => {
+  const path = usePathname()
+  const [singleBlog, setSingleBlog] = useState(null)
+  useEffect((
+    
+  )=>{
+    if(blogId) {
+      fetch(`/api/blogs/${blogId}`)
+      .then(r => r. ok ? r.json() : console.log({error: r}))
+      .then(data => setSingleBlog(data))
+    }
+  },[path])
+
+
   function processUserInput(input) {
     // Regular expression to match code blocks enclosed in triple backticks
     const codeBlockRegex = /```([\s\S]*?)```/g;
@@ -68,7 +83,7 @@ const BlogPost = ({userInput, blogId, title}) => {
   return (
     <div id={`${blogId}`} className='bg-gray-50/20 px-20 my-2'>
       <h1 className={`font-semibold underline`}>{title}</h1>
-      {userInput? <LoadingList instant={true} items={processUserInput(userInput)} waitTimer={2000} />: null}
+      {singleBlog && singleBlog.content? <LoadingList instant={true} items={processUserInput(singleBlog.content)} waitTimer={7000} />: null}
     </div>
   )
 }

@@ -1,15 +1,18 @@
 "use client";
 import React, {useContext} from 'react'
 import BlogMap from "./BlogMap"
+import BlogPost from './BlogPost';
 import {Context} from "/context/Context"
 import HideButton from './HideButton';
+import {usePathname} from "next/navigation"
 
 
 const MainPage = () => {
+    const path = usePathname()
     const {hideBar} = useContext(Context)
   return (
     // 
-    <div id="main-page" className="relative flex h-full max-w-full flex-1 overflow-hidden bg-gray-800">
+    <div id="main-page" className="relative flex h-full max-w-full max-h-100vh flex-1 overflow-hidden bg-gray-800">
         {hideBar ? <HideButton /> : null}
     <div className="flex h-full max-w-full flex-1 flex-col" >
         <main className="relative h-full w-full transition-width overflow-auto flex-1">
@@ -24,8 +27,8 @@ const MainPage = () => {
                                     ConRAD
                                 </h1>
                             </div>
-                            <BlogMap />
-
+                            
+                        {path.split("/blog").length > 1 ? <div id="BlogMap" className="w-full text-[#c9cdd3]"> <BlogPost blogId={path.split("/blog")[1]}  /> </div> : null}
 
                         </div>
 
