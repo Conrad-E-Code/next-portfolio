@@ -10,12 +10,10 @@ const LayoutWrapper = () => {
     <div className="flex h-full w-full flex-col">
       <div
         className={
-          path.split("/blog").length >= 2
-            ? ` grow overflow-hidden`
-            : `hidden`
+          path.split("/blog").length >= 2 ? ` grow overflow-hidden` : `hidden`
         }
       >
-        <div className="overflow-hidden w-full h-full relative flex z-0">
+        <div id="main-holder" className="overflow-hidden w-full h-full relative flex z-0">
           <div className="dark flex-shrink-0 overflow-x-hidden bg-gray-900">
             <SideBar />
           </div>

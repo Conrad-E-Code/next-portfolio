@@ -20,10 +20,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <ContextProvider>
       <body style={{backgroundColor: "#1f2937"}} className={inter.className}>
-        <LayoutWrapper />
+
         <NavBar/>
         {children}
-        
+        <LayoutWrapper />
       </body>
       </ContextProvider>
     </html>

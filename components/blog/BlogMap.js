@@ -15,12 +15,12 @@ const BlogMap = () => {
       {/* WelCOME CHAT */}
       {/* <ChatPost /> */}
       {/* //map through blogs here! */}
-      <BlogPost title={"Welcome to my Blog!"} blogId={''} userInput={"This is my blog website, below you will find the five latest blogs or you can navigate through the blogs using the sidebar. Enjoy! ```console.log('check out the capabilities of this code block. try Copy Code')``` Hopefully thes codeblocks are nice"}
+      <BlogPost title={"Welcome to my Blog!"} blogId={''} userInput={"This is my blog website, below you will find the five latest blogs or you can navigate through the blogs using the sidebar. Enjoy! ```console.log('check out the capabilities of this code block. try Copy Code')```"}
         />
       {serverBlogs && serverBlogs.length > 0 ? (
         
         <LoadingList instant={false}
-          waitTimer={7000}
+          waitTimer={3000}
           items={serverBlogs.slice(0,5).map((blog) => {
             return <BlogPost title={blog.title} blogId={blog._id} userInput={blog.content} />;
           })}

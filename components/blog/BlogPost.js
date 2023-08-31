@@ -1,11 +1,22 @@
+"use client";
 import React from 'react'
 import CodeBlock from '../CodeBlock'
 import ChatPost from './ChatPost'
 import TypingEffect from './TypingEffect';
 import LiveCode from './LiveCode';
 import LoadingList from './LoadingList';
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import {useContext} from "react"
+import {Context} from "/context/Context"
 
-const BlogPost = ({userInput, blogId, title}) => {
+const BlogPost = ({blog}) => {
+  const path = usePathname()
+  const {singleBlog, setSingleBlog} = useContext(Context)
+
+
+
+
   function processUserInput(input) {
     // Regular expression to match code blocks enclosed in triple backticks
     const codeBlockRegex = /```([\s\S]*?)```/g;
@@ -66,9 +77,9 @@ const BlogPost = ({userInput, blogId, title}) => {
   }
 
   return (
-    <div id={`${blogId}`} className='bg-gray-50/20 px-20 my-2'>
-      <h1 className={`font-semibold underline`}>{title}</h1>
-      {userInput? <LoadingList instant={true} items={processUserInput(userInput)} waitTimer={2000} />: null}
+    <div key={`BP-key-${path}`}  className='bg-gray-50/20 px-20 my-2'>
+      {/* <h1 className={`font-semibold underline`}>{blog.title}</h1> */}
+      {blog && blog.content? <LoadingList instant={true} items={processUserInput(blog.content)} waitTimer={2600} />: null}
     </div>
   )
 }

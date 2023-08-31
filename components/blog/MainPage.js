@@ -1,15 +1,27 @@
 "use client";
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import BlogMap from "./BlogMap"
+import BlogPost from './BlogPost';
 import {Context} from "/context/Context"
 import HideButton from './HideButton';
+import {usePathname} from "next/navigation"
 
 
 const MainPage = () => {
-    const {hideBar} = useContext(Context)
+    const path = usePathname()
+    const {hideBar, setSingleBlog, singleBlog} = useContext(Context)
+    useEffect((
+        )=>{
+          
+            fetch(`/api/blogs/${path.split("/blog")[1]}`)
+            .then(r => r. ok ? r.json() : console.log({error: r}))
+            .then(data => setSingleBlog(data))
+          
+        },[path])
+
   return (
     // 
-    <div id="main-page" className="relative flex h-full max-w-full flex-1 overflow-hidden bg-gray-800">
+    <div id="main-page" className="relative flex h-full max-w-full max-h-100vh flex-1 overflow-hidden bg-gray-800">
         {hideBar ? <HideButton /> : null}
     <div className="flex h-full max-w-full flex-1 flex-col" >
         <main className="relative h-full w-full transition-width overflow-auto flex-1">
@@ -24,8 +36,8 @@ const MainPage = () => {
                                     ConRAD
                                 </h1>
                             </div>
-                            <BlogMap />
-
+                            
+                        {path.split("/blog").length > 1 ? <div id="BlogMap" className="w-full text-[#c9cdd3]"> <BlogPost blog={singleBlog}  /> </div> : null}
 
                         </div>
 

@@ -2,10 +2,19 @@
 import React from 'react'
 import BlogListItem from "./BlogListItem"
 import {Context} from "/context/Context"
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 
 const BlogList = () => {
-  const {serverBlogs} = useContext(Context)
+  const {serverBlogs, setServerBlogs} = useContext(Context)
+  useEffect(() => {
+    fetch("/api/blogs")
+    .then(
+        r => r.ok ? r.json() : console.log(r))
+    .catch(err => console.log(err))
+    .then(data => {setServerBlogs(data)
+      console.log(data)})
+    .catch(err => console.log(err))
+  }, [])
   return (
     <div className="flex flex-col gap-2 pb-2 text-gray-100 text-sm">
     <div>
@@ -29,7 +38,7 @@ const BlogList = () => {
           <ol>{/* Map Today BLogs Here */}
           {serverBlogs && serverBlogs.length > 0 ? serverBlogs.map((blog) => {
             return(
-              <BlogListItem title={blog.title} blogId={blog._id} />
+              <BlogListItem key={`BLI-${blog._id}`} title={blog.title} blogId={blog._id} />
             )
           }) : <li>Loading Previous Blogs</li>}
           </ol>
@@ -51,11 +60,11 @@ const BlogList = () => {
           </div>
           {/* BEGIN LIST OF BLOGS HERE */}
           <ol>{/* Map Today BLogs Here */}
-          {serverBlogs && serverBlogs.length > 0 ? serverBlogs.map((blog) => {
+          {/* {serverBlogs && serverBlogs.length > 0 ? serverBlogs.map((blog) => {
             return(
-              <BlogListItem title={blog.title} blogId={blog._id} />
+              <BlogListItem  title={blog.title} blogId={blog._id} />
             )
-          }) : <li>Loading Previous Blogs</li>}
+          }) : <li>Loading Previous Blogs</li>} */}
           </ol>
         </div>
       </span>
