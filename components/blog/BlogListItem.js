@@ -8,8 +8,7 @@ const BlogListItem = ({title, blogId}) => {
     const router = useRouter()
   return (
     <li onClick={(e)=>{
-      e.preventDefault()
-      router.push(`/blog/${blogId}`, {shallow: true})}} className={"relative"} style={{
+      router.push(`/blog/${blogId}`)}} className={"relative"} style={{
         opacity: 1,
         height: "auto",
 

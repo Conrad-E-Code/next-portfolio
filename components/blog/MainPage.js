@@ -1,5 +1,5 @@
 "use client";
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import BlogMap from "./BlogMap"
 import BlogPost from './BlogPost';
 import {Context} from "/context/Context"
@@ -9,7 +9,16 @@ import {usePathname} from "next/navigation"
 
 const MainPage = () => {
     const path = usePathname()
-    const {hideBar} = useContext(Context)
+    const {hideBar, setSingleBlog, singleBlog} = useContext(Context)
+    useEffect((
+        )=>{
+          
+            fetch(`/api/blogs/${path.split("/blog")[1]}`)
+            .then(r => r. ok ? r.json() : console.log({error: r}))
+            .then(data => setSingleBlog(data))
+          
+        },[path])
+
   return (
     // 
     <div id="main-page" className="relative flex h-full max-w-full max-h-100vh flex-1 overflow-hidden bg-gray-800">
@@ -28,7 +37,7 @@ const MainPage = () => {
                                 </h1>
                             </div>
                             
-                        {path.split("/blog").length > 1 ? <div id="BlogMap" className="w-full text-[#c9cdd3]"> <BlogPost blogId={path.split("/blog")[1]}  /> </div> : null}
+                        {path.split("/blog").length > 1 ? <div id="BlogMap" className="w-full text-[#c9cdd3]"> <BlogPost blog={singleBlog}  /> </div> : null}
 
                         </div>
 

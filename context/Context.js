@@ -3,6 +3,8 @@ import { createContext, useState, useEffect, useRef } from "react";
 import Colors from "../constants/colors";
 export const Context = createContext();
 export const ContextProvider = ({ children }) => {
+  // Single Blog for renderinging
+const [singleBlog, setSingleBlog] = useState()
 
   // NAvBAr show hide
   const [hideBar, setHideBar] = useState(false)
@@ -52,7 +54,9 @@ const [serverBlogs, setServerBlogs] = useState([])
         serverBlogs,
         setServerBlogs,
         hideBar,
-        setHideBar
+        setHideBar,
+        singleBlog,
+        setSingleBlog
       }}
     >
       {children}

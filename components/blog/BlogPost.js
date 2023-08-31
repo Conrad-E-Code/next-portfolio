@@ -7,18 +7,14 @@ import LiveCode from './LiveCode';
 import LoadingList from './LoadingList';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-const BlogPost = ({userInput, blogId, title}) => {
+import {useContext} from "react"
+import {Context} from "/context/Context"
+
+const BlogPost = ({blog}) => {
   const path = usePathname()
-  const [singleBlog, setSingleBlog] = useState(null)
-  useEffect((
-    
-  )=>{
-    if(blogId) {
-      fetch(`/api/blogs/${blogId}`)
-      .then(r => r. ok ? r.json() : console.log({error: r}))
-      .then(data => setSingleBlog(data))
-    }
-  },[path])
+  const {singleBlog, setSingleBlog} = useContext(Context)
+
+
 
 
   function processUserInput(input) {
@@ -81,9 +77,9 @@ const BlogPost = ({userInput, blogId, title}) => {
   }
 
   return (
-    <div id={`${blogId}`} className='bg-gray-50/20 px-20 my-2'>
-      <h1 className={`font-semibold underline`}>{title}</h1>
-      {singleBlog && singleBlog.content? <LoadingList instant={true} items={processUserInput(singleBlog.content)} waitTimer={7000} />: null}
+    <div key={`BP-key-${path}`}  className='bg-gray-50/20 px-20 my-2'>
+      {/* <h1 className={`font-semibold underline`}>{blog.title}</h1> */}
+      {blog && blog.content? <LoadingList instant={true} items={processUserInput(blog.content)} waitTimer={2600} />: null}
     </div>
   )
 }
