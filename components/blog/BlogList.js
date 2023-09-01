@@ -36,7 +36,7 @@ const BlogList = () => {
           </div>
           {/* BEGIN LIST OF BLOGS HERE */}
           <ol>{/* Map Today BLogs Here */}
-          {serverBlogs && serverBlogs.length > 0 ? serverBlogs.map((blog) => {
+          {serverBlogs && serverBlogs.length > 0 ? serverBlogs.reverse().map((blog) => {
             return(
               <BlogListItem key={`BLI-${blog._id}`} title={blog.title} blogId={blog._id} />
             )

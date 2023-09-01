@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import countries from "../../data/countries.json";
-import { HeatmapLayer } from "leaflet-heatmap"; // Import HeatmapLayer
 import {
   MapContainer,
   TileLayer,
@@ -9,7 +8,6 @@ import {
   Marker,
   Tooltip,
 } from "react-leaflet";
-import "leaflet-heatmap/leaflet-heatmap"; 
 const MyMap = () => {
   const inputRef = useRef(null);
   const mapRef = useRef(null)
@@ -20,7 +18,6 @@ const MyMap = () => {
   ]);
   useEffect(() => {
     if (!mapRef.current) return;
-
     const map = L.map(mapRef.current);
 
     map.setView([51.505, -0.09], 13);
@@ -35,41 +32,6 @@ const MyMap = () => {
       map.remove();
     };
   }, [heatmapData]);
-  // useEffect(() => {
-  //   // Create a map instance
-  //   const map = L.map(mapRef.current).setView([51.505, -0.09], 13);
-
-  //   // Add a base tile layer
-  //   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  //     attribution: '© OpenStreetMap contributors'
-  //   }).addTo(map);
-
-  //   // Create a heatmap layer
-  //   const heatmapLayer = L.heatLayer(heatmapData, {
-  //     radius: 25,
-  //     blur: 15
-  //   }).addTo(map);
-  // }, [heatmapData]);
-  // useEffect(() => {
-  //   // Create a map instance
-  //   const map = L.map(mapRef.current);
-  
-  //   // Set up the map view
-  //   map.setView([51.505, -0.09], 13);
-  
-  //   // Add a base tile layer
-  //   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  //     attribution: '© OpenStreetMap contributors'
-  //   }).addTo(map);
-  
-  //   // Create a heatmap layer
-  //   const heatmapLayer = new HeatmapLayer({
-  //     radius: 25,
-  //     blur: 15
-  //   }).addTo(map);
-  
-  //   heatmapLayer.setLatLngs(heatmapData);
-  // }, [heatmapData]);
 
   function handleClick() {
     inputRef.current.focus({ focusVisible: true });
@@ -107,7 +69,6 @@ const MyMap = () => {
 
     console.log(cntryName);
     console.log(layer);
-    // layer.options.fillOpacity = Math.random()
     layer.options.fillColor = colors[Math.floor(Math.random() * 5)];
     layer.bindPopup(cntryName);
     layer.bindTooltip(isoa3, { sticky: true, opacity: 0.8 });
@@ -120,23 +81,6 @@ const MyMap = () => {
         );
       },
       mouseover: changeCountryColor,
-      // mouseout: (e) => {
-      //     setTimeout(()=>{
-      //         e.target.setStyle({
-      //             fillColor: "yellow"
-      //         })
-      //     }, 2000)
-      //     setTimeout(()=>{
-      //         e.target.setStyle({
-      //             fillColor: "orange"
-      //         })
-      //     }, 5000)
-      //     setTimeout(()=>{
-      //         e.target.setStyle({
-      //             fillColor: "red"
-      //         })
-      //     }, 7000)
-      // }
     });
   }
 
@@ -160,16 +104,7 @@ const MyMap = () => {
             data={countries}
             onEachFeature={onEachCountry}
           >
-            {/* <Tooltip direction="bottom" offset={[0, 20]} opacity={1} >
-        tooltip
-      </Tooltip> */}
           </GeoJSON>
-          {/* <HeatmapLayer
-        points={heatmapData}
-        latitudeExtractor={(point) => point[0]}
-        longitudeExtractor={(point) => point[1]}
-        intensityExtractor={(point) => point[2]}
-      /> */}
         </MapContainer>
       </div>
       <div className="flex">
